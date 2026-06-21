@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中華房 希彩 | 小さな中華の特等席</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'rich-black': '#141312',
+            'dark-sepia': '#26211E',
+            'brass': '#b79456',
+            'off-white': '#fcfbfa',
+            'mute-gray': '#A19B95',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif JP"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Serif JP', serif; }
+    .font-eng { font-family: 'Montserrat', sans-serif; }
+    
+    /* 追従バナー用の余白 */
+    body { padding-bottom: 80px; }
+    @media (min-width: 768px) { body { padding-bottom: 0; } }
+
+    /* スクロール位置の調整（固定ヘッダー分） */
+    section { scroll-margin-top: 80px; }
+
+    /* 追従予約バー（スマホは下部固定、PCは右下フロート） */
+    #floating-reservation-bar { 
+      position: fixed; 
+      bottom: 0; left: 0; width: 100%; 
+      background-color: rgba(20, 19, 18, 0.96); 
+      backdrop-filter: blur(10px); 
+      border-top: 1px solid #b79456; 
+      z-index: 50; 
+      padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px)) 0; 
+      text-align: center; 
+    }
+    .bar-buttons { display: flex; justify-content: center; gap: 12px; max-width: 600px; margin: 0 auto; padding: 0 16px; }
+    .bar-buttons a, .bar-buttons button { 
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+      height: 54px; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; 
+      text-decoration: none; color: #fff; border-radius: 4px; transition: all 0.3s ease; 
+    }
+    .btn-line-style { background-color: #06C755; }
+    .btn-line-style:hover { background-color: #05b34c; }
+    .btn-tel-style { background-color: #b79456; }
+    .btn-tel-style:hover { background-color: #a38249; }
+    .tel-subtext { font-size: 10px; opacity: 0.9; margin-top: 2px;}
+
+    @media (min-width: 768px) {
+      #floating-reservation-bar { 
+        left: auto; right: 32px; bottom: 32px; width: 320px; 
+        border: 1px solid #b79456; padding: 24px; border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+      }
+      .bar-buttons { flex-direction: column; gap: 16px; padding: 0; }
+    }
+  </style>
+</head>
+<body class="w-full min-h-screen antialiased text-off-white selection:bg-brass selection:text-rich-black bg-rich-black">
+
+  <!-- ヘッダーナビゲーション -->
+  <header class="fixed top-0 w-full z-40 backdrop-blur-md bg-rich-black/90 border-b border-brass/20">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <h1 class="text-xl md:text-2xl tracking-widest text-off-white font-medium">中華房 希彩</h1>
+      <nav class="hidden md:flex gap-8">
+        <a href="#about" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ABOUT</a>
+        <a href="#menu" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">MENU</a>
+        <a href="#access" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ACCESS</a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-off-white focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-rich-black border-b border-brass/20 absolute w-full left-0 top-[60px]">
+      <nav class="flex flex-col text-center py-4">
+        <a href="#about" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">ABOUT</a>
+        <a href="#menu" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">MENU</a>
+        <a href="#access" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">ACCESS</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ヒーローセクション -->
+    <section id="hero" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      <img class="absolute inset-0 w-full h-full object-cover scale-105" src="images/hero.jpg" alt="特等席のカウンター">
+      <div class="absolute inset-0 bg-gradient-to-b from-rich-black/70 via-rich-black/40 to-rich-black"></div>
+      <div class="relative z-10 text-center px-6 max-w-3xl flex flex-col items-center mt-16">
+        <span class="font-eng text-sm tracking-[0.3em] uppercase mb-6 text-brass">The Private Gastronomy</span>
+        <h2 class="text-2xl md:text-4xl leading-loose text-off-white font-light tracking-widest mb-8">塩尻の小さな特等席で、<br class="md:hidden">手仕事のぬくもりを味わう。</h2>
+      </div>
+      <div class="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-80">
+        <span class="font-eng text-xs tracking-[0.2em] text-mute-gray uppercase mb-3">Scroll</span>
+        <div class="w-[1px] h-16 bg-gradient-to-b from-brass to-transparent"></div>
+      </div>
+    </section>
+
+    <!-- クイックナビゲーション（画像リンク） -->
+    <section class="w-full bg-rich-black -mt-1 relative z-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 w-full">
+        <a href="#about" class="relative block aspect-square md:aspect-[4/3] group overflow-hidden">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110" src="images/hero.jpg" alt="ABOUT KISAI">
+          <div class="absolute inset-0 bg-rich-black/40 group-hover:bg-rich-black/10 transition-colors duration-300"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
+            <span class="font-eng text-base md:text-xl font-medium tracking-[0.2em] text-white">ABOUT</span>
+            <span class="text-[11px] md:text-xs text-brass tracking-widest mt-2">希彩とは</span>
+          </div>
+        </a>
+        <a href="#craft" class="relative block aspect-square md:aspect-[4/3] group overflow-hidden">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110" src="images/p1.jpg" alt="CRAFTSMANSHIP">
+          <div class="absolute inset-0 bg-rich-black/40 group-hover:bg-rich-black/10 transition-colors duration-300"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
+            <span class="font-eng text-base md:text-xl font-medium tracking-[0.2em] text-white">CRAFTS</span>
+            <span class="text-[11px] md:text-xs text-brass tracking-widest mt-2">手打ちのこだわり</span>
+          </div>
+        </a>
+        <a href="#anniversary" class="relative block aspect-square md:aspect-[4/3] group overflow-hidden">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110" src="images/g1.jpg" alt="ANNIVERSARY">
+          <div class="absolute inset-0 bg-rich-black/40 group-hover:bg-rich-black/10 transition-colors duration-300"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
+            <span class="font-eng text-base md:text-xl font-medium tracking-[0.2em] text-white">ANNIVERSARY</span>
+            <span class="text-[11px] md:text-xs text-brass tracking-widest mt-2">記念日・お祝い</span>
+          </div>
+        </a>
+        <a href="#menu" class="relative block aspect-square md:aspect-[4/3] group overflow-hidden">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110" src="images/g2.jpg" alt="MENU">
+          <div class="absolute inset-0 bg-rich-black/40 group-hover:bg-rich-black/10 transition-colors duration-300"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
+            <span class="font-eng text-base md:text-xl font-medium tracking-[0.2em] text-white">MENU</span>
+            <span class="text-[11px] md:text-xs text-brass tracking-widest mt-2">お品書き</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT セクション -->
+    <section id="about" class="w-full py-24 md:py-32 px-6 bg-off-white text-rich-black">
+      <div class="max-w-4xl mx-auto text-center space-y-8">
+        <span class="font-eng text-xs tracking-[0.3em] text-brass uppercase block">About Kisai</span>
+        <h2 class="text-2xl md:text-3xl tracking-widest font-medium">小さな中華の特等席へ、ようこそ</h2>
+        <div class="w-12 h-[1px] bg-brass mx-auto my-6"></div>
+        <div class="grid md:grid-cols-2 gap-12 items-center text-left mt-12">
+          <div class="space-y-6">
+            <p class="text-base leading-loose font-light text-stone-700">「中華房 希彩（きさい）」は、目の前で行き交う職人の手仕事と、湯気や音まで贅沢に味わっていただける小さなお店です。</p>
+            <p class="text-base leading-loose font-light text-stone-700">大切な方との日常のお食事はもちろん、人生のハレの日や特別な記念日に、信州の豊かな自然が育んだ食材と、一から心を込めて作る本格中国料理で、記憶に残るひとときをお届けいたします。</p>
+          </div>
+          <div class="relative aspect-square md:aspect-[4/3]">
+            <img class="w-full h-full object-cover rounded shadow-lg" src="images/story.jpg" alt="希彩の空間">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFT セクション -->
+    <section id="craft" class="w-full py-24 md:py-32 px-6 bg-rich-black text-off-white border-t border-brass/20">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div class="relative group overflow-hidden shadow-2xl rounded-sm">
+          <img class="w-full h-[400px] md:h-[500px] object-cover filter sepia-[10%] contrast-[105%]" src="images/p1.jpg" alt="職人の手仕事">
+          <div class="absolute inset-0 border border-brass/30 m-4 pointer-events-none"></div>
+        </div>
+        <div class="space-y-8">
+          <span class="font-eng text-xs tracking-[0.3em] text-brass block uppercase">Our Craftsmanship</span>
+          <h2 class="text-2xl md:text-3xl tracking-widest font-medium text-off-white">手打ち・手包みにこだわる理由</h2>
+          <p class="text-base leading-loose text-mute-gray font-light">私たちが麺や皮を「一から手作業」で作るのは、そこにしか宿らない食感とぬくもりがあるからです。その日の気温や湿度に合わせて加水率と熟成時間を繊細に見極め、毎日丁寧に生地を仕込みます。</p>
+          <p class="text-base leading-loose text-mute-gray font-light">手伸ばしした皮で一つひとつ真心を込めて包む水餃子は、噛んだ瞬間に信州の恵みともっちりとした極上の食感が広がります。確かな手仕事が生む、ここでしか味わえない一皿をご堪能ください。</p>
+          <div class="pt-6">
+            <a href="https://share.google/86D9eNO3dSVZS6Tbh" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 border border-brass text-brass text-sm tracking-widest hover:bg-brass hover:text-rich-black transition-all duration-300 rounded-sm">
+              日本中国料理協会 金賞受賞 水餃子の詳細へ →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 食材と作り手紹介セクション -->
+    <section class="w-full py-24 md:py-32 px-6 bg-dark-sepia/20 border-t border-brass/10">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 md:mb-24">
+          <span class="font-eng text-xs tracking-[0.3em] text-brass block uppercase mb-3">Terroir & Artisans</span>
+          <h2 class="text-2xl md:text-3xl tracking-widest font-medium text-off-white">紡がれた縁、信州の誇り</h2>
+          <div class="w-12 h-[1px] bg-brass/50 mx-auto mt-6"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="bg-rich-black/50 border border-brass/10 p-6 md:p-8 rounded-sm hover:border-brass/30 transition-colors">
+            <div class="overflow-hidden aspect-[4/3] mb-6 relative">
+              <img class="w-full h-full object-cover" src="images/p2.jpg" alt="厳選食材">
+              <div class="absolute inset-0 border border-brass/20 m-2"></div>
+            </div>
+            <span class="text-xs tracking-widest text-brass font-medium block mb-2">名水が育む美しき白身魚</span>
+            <h3 class="text-lg font-medium tracking-wider text-off-white mb-4">シナノユキマス（百瀬さん）</h3>
+            <p class="text-sm text-mute-gray leading-loose font-light">信州の清らかな冷水で大切に育てられたシナノユキマス。繊細で上品な味わいと、美しく引き締まった身質はまさに一級品。職人の確かな情熱が宿るこの魚を、最高の状態でお皿へと昇華させます。</p>
+          </div>
+          <div class="bg-rich-black/50 border border-brass/10 p-6 md:p-8 rounded-sm hover:border-brass/30 transition-colors">
+            <div class="overflow-hidden aspect-[4/3] mb-6 relative">
+              <img class="w-full h-full object-cover" src="images/p3.jpg" alt="洗馬焼">
+              <div class="absolute inset-0 border border-brass/20 m-2"></div>
+            </div>
+            <span class="text-xs tracking-widest text-brass font-medium block mb-2">料理を包み込む唯一無二の土肌</span>
+            <h3 class="text-lg font-medium tracking-wider text-off-white mb-4">洗馬焼（寺西尚子さん）</h3>
+            <p class="text-sm text-mute-gray leading-loose font-light">地元の土を使い、静かで力強い佇まいを見せる洗馬焼。作陶家・寺西尚子さんの温かみ溢れる器は、料理を優しく引き立て、お客様の時間をより特別なものへと彩ってくれます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNIVERSARY セクション -->
+    <section id="anniversary" class="w-full py-24 md:py-32 px-6 bg-off-white text-rich-black">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="font-eng text-xs tracking-[0.3em] text-brass block uppercase mb-3">Anniversary</span>
+          <h2 class="text-2xl md:text-3xl tracking-widest font-medium">記念日・お祝いに</h2>
+          <div class="w-12 h-[1px] bg-brass mx-auto mt-6"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div class="space-y-6 text-base text-stone-700 font-light leading-loose">
+            <p class="font-medium text-stone-900 text-lg">大切な節目を、希彩のおもてなしで。</p>
+            <p>お誕生日や結婚記念日、ご長寿のお祝い、精度高いご両家のお顔合わせなど、人生の特別な「ハレの日」にふさわしい演出をご用意しております。</p>
+            <ul class="space-y-4 bg-stone-100 p-8 border-l-4 border-brass rounded-r-sm text-sm md:text-base">
+              <li><span class="font-medium text-brass">◆ お祝いデザートプレート：</span> コースをご注文の方へ、メッセージを添えた特製プレートをお仕立てします。</li>
+              <li><span class="font-medium text-brass">◆ 乾杯の贈り物：</span> 記念日でのご利用の皆様へ、乾杯のドリンクをサービスいたします。</li>
+              <li><span class="font-medium text-brass">◆ お子様連れ歓迎：</span> ベビーチェアや小さなお子様用のカトラリーも完備。ご家族で気兼ねなくお過ごしいただけます。</li>
+            </ul>
+          </div>
+          <div class="relative aspect-[4/3] overflow-hidden rounded-sm shadow-xl">
+            <img class="w-full h-full object-cover" src="images/g1.jpg" alt="お祝いの席">
+            <div class="absolute inset-0 border border-white/40 m-4 pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU セクション -->
+    <section id="menu" class="w-full py-24 md:py-32 px-6 bg-rich-black text-off-white">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-20 md:mb-28">
+          <span class="font-eng text-xs tracking-[0.3em] text-brass uppercase block mb-3">Menu</span>
+          <h2 class="text-2xl md:text-3xl tracking-widest font-medium">お品書き</h2>
+          <div class="w-12 h-[1px] bg-brass/50 mx-auto mt-6"></div>
+        </div>
+
+        <!-- 昼のランチ（詳細版） -->
+        <div class="mb-24 relative">
+          <div class="hidden lg:block absolute right-0 top-0 w-1/4 h-full opacity-10 pointer-events-none">
+            <img class="w-full h-full object-cover rounded-sm" src="images/g2.jpg" alt="ランチ背景">
+          </div>
+          <div class="relative z-10">
+            <div class="flex flex-col md:flex-row md:items-baseline border-b border-brass/20 pb-4 mb-8">
+              <h3 class="text-xl md:text-2xl tracking-widest text-brass font-medium">お昼の献立</h3>
+              <p class="font-eng text-xs mt-3 md:mt-0 md:ml-6 tracking-wider text-mute-gray">11:30 - 14:00 (L.O. 13:30)</p>
+            </div>
+            <p class="text-base text-mute-gray mb-4 font-light tracking-wide leading-loose">
+              信州の豊かな素材を、お気軽に楽しむ小さな特等席のランチ。手作りの点心と本格的な味わいをお昼からご堪能ください。
+            </p>
+            <p class="text-sm text-brass font-light mb-10 border-l border-brass/40 pl-4 py-1 bg-dark-sepia/20">
+              ※点心は出来立ての一番美味しい状態でお出しするため、ご着席と同時に調理を開始いたします。
+            </p>
+
+            <!-- 3カラムメニューカード配置 -->
+            <div class="grid md:grid-cols-3 gap-6">
+              <!-- 1. 定食 -->
+              <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
+                <div>
+                  <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">特製手包み点心と一品おかずの定食</h4>
+                  <p class="text-base text-brass font-eng tracking-wider mb-4">¥1,350 — ¥1,600</p>
+                  <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
+                    一つひとつ真心込めて手で包むジューシーな点心と、隔週替わりの逸品を一度に楽しめる大満足のセット。お米は職人が火加減にこだわり、丁寧に土鍋で炊き上げるふっくら艶やかな仕上がりです。（※新潟県産コシヒカリを使用）
+                  </p>
+                </div>
+                <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
+              </div>
+
+              <!-- 2. 麺セット -->
+              <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
+                <div>
+                  <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">特製点心と手打ちこだわり麺セット</h4>
+                  <p class="text-base text-brass font-eng tracking-wider mb-4">¥1,350 — ¥1,980</p>
+                  <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
+                    加水率と熟成時間にこだわり抜いた特製中華麺を使った、隔週替わりの楽しみな一杯。セットの点心はその時々の最高に美味しい状態のものを厳選して手包みいたします。
+                  </p>
+                </div>
+                <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
+              </div>
+
+              <!-- 3. よくばりセット -->
+              <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
+                <div>
+                  <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">希彩 よくばりセット（麺・ご飯・おかず）</h4>
+                  <p class="text-base text-brass font-eng tracking-wider mb-4">¥2,200 — ¥2,600</p>
+                  <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
+                    「手打ち麺も、土鍋ご飯も、おかずも、すべて欲張りに楽しみたい」という方のための特別なフルセット。希彩の魅力をひと通り堪能できる、お腹も心も満たされる大満足の組み合わせです。
+                  </p>
+                </div>
+                <p class="text-[11px] text-brass/40 mt-4 pt-4 border-t border-brass/10">希彩のフルコース仕様</p>
+              </div>
+            </div>
+
+            <!-- 贅沢オプションエリア（Tailwind最適化版） -->
+            <div class="mt-8 border border-brass/30 bg-dark-sepia/30 p-6 md:p-8 rounded-sm">
+              <h4 class="text-sm md:text-base tracking-widest text-brass font-medium mb-6 flex items-center">
+                <span class="inline-block w-2 h-2 bg-brass mr-2 rotate-45"></span> お昼を彩る「贅沢オプション」
+              </h4>
+              <ul class="space-y-6">
+                <li class="border-b border-brass/10 pb-4 lg:flex lg:justify-between lg:items-start lg:gap-8">
+                  <div class="flex-1">
+                    <div class="flex justify-between items-baseline mb-1">
+                      <span class="text-sm md:text-base font-medium text-off-white">前菜付きへバージョンアップ</span>
+                      <span class="text-brass font-eng text-sm font-medium">+¥400</span>
+                    </div>
+                    <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">通常の小鉢を、旬の厳選素材を盛り込んだ「特製前菜」へと変更いたします。</p>
+                  </div>
+                </li>
+                <li class="border-b border-brass/10 pb-4 lg:flex lg:justify-between lg:items-start lg:gap-8">
+                  <div class="flex-1">
+                    <div class="flex justify-between items-baseline mb-1">
+                      <span class="text-sm md:text-base font-medium text-off-white">特製デザート盛り合わせ</span>
+                      <span class="text-brass font-eng text-sm font-medium">+¥500</span>
+                    </div>
+                    <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">食後の余韻にゆったりと浸る、贅沢な別腹デザート。</p>
+                  </div>
+                </li>
+                <li class="lg:flex lg:justify-between lg:items-start lg:gap-8">
+                  <div class="flex-1">
+                    <div class="flex justify-between items-baseline mb-1">
+                      <span class="text-sm md:text-base font-medium text-off-white">ギルティーな昼飲み</span>
+                      <span class="text-brass font-eng text-sm font-medium">各¥450〜</span>
+                    </div>
+                    <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">ひとくち生ビール、紹興酒、カウンター限定酒など。お昼休みの背徳感、または休日の贅沢に極上の一杯をどうぞ。</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 夜のコース -->
+        <div class="relative">
+          <div class="hidden lg:block absolute left-0 top-0 w-1/4 h-full opacity-10 pointer-events-none">
+            <img class="w-full h-full object-cover rounded-sm" src="images/g3.jpg" alt="ディナー背景">
+          </div>
+          <div class="relative z-10">
+            <div class="flex flex-col md:flex-row md:items-baseline border-b border-brass/20 pb-4 mb-10">
+              <h3 class="text-xl md:text-2xl tracking-widest text-brass font-medium">夜のコース</h3>
+              <p class="font-eng text-xs mt-3 md:mt-0 md:ml-6 tracking-wider text-mute-gray">17:30 - 21:00 / ※当日15:00までに要予約</p>
+            </div>
+            <p class="text-base text-mute-gray mb-10 font-light tracking-wide leading-loose">カウンター越しに届く湯気と音。時間をかけて発酵・熟成させた自家製調味料をベースに、厳選した器で彩る本格モダン中華のコース。</p>
+            <div class="p-8 md:p-10 border border-brass/30 bg-gradient-to-br from-dark-sepia/80 to-rich-black rounded-sm shadow-2xl">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-brass/20 pb-6">
+                <h4 class="text-xl tracking-wider font-medium text-off-white">【希彩 おまかせコース】</h4>
+                <p class="text-xl text-brass font-eng tracking-wider">¥6,600 / ¥8,800〜</p>
+              </div>
+              <p class="text-base text-mute-gray leading-loose font-light">
+                前菜、点心「長野県支部金賞受賞 水餃子」、温菜、主菜、特製熟成中華麺、特製デザート盛り合わせ<br><br>
+                アレルギーや苦手食材など伺ってお客様に最適なディナーを提案します。誕生日やお祝いの席などでもご利用ください。特製デザートプレートご用意させていただきます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY セクション -->
+    <section class="w-full py-24 md:py-32 px-6 bg-dark-sepia/10">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="font-eng text-xs tracking-[0.3em] text-brass uppercase block mb-3">Gallery</span>
+          <h2 class="text-2xl md:text-3xl tracking-widest font-medium">情景</h2>
+          <div class="w-12 h-[1px] bg-brass/50 mx-auto mt-6"></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+          <div class="overflow-hidden relative group aspect-square rounded-sm shadow-md">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="images/g4.jpg" alt="情景1">
+          </div>
+          <div class="overflow-hidden relative group aspect-square rounded-sm shadow-md">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="images/p1.jpg" alt="情景2">
+          </div>
+          <div class="overflow-hidden relative group aspect-square rounded-sm shadow-md">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="images/g2.jpg" alt="情景3">
+          </div>
+          <div class="overflow-hidden relative group aspect-square rounded-sm shadow-md">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="images/story.jpg" alt="情景4">
+          </div>
+          <div class="overflow-hidden relative group aspect-square rounded-sm shadow-md">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="images/p3.jpg" alt="情景5">
+          </div>
+          <div class="overflow-hidden relative group aspect-square rounded-sm shadow-md">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="images/g3.jpg" alt="情景6">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESS セクション -->
+    <section id="access" class="w-full py-24 md:py-32 px-6 bg-off-white text-rich-black border-t border-brass/10">
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+        <div class="w-full md:w-1/2 space-y-8">
+          <span class="font-eng text-xs tracking-[0.3em] text-brass uppercase block">Access</span>
+          <h2 class="text-2xl tracking-widest font-medium">店舗所在地</h2>
+          <div class="space-y-4 font-light text-base text-stone-700 leading-loose">
+            <p class="font-medium text-lg text-stone-900">中華房 希彩 KISAI</p>
+            <p>〒399-0736<br>長野県塩尻市大門一番町8-2</p>
+            <p class="pt-2 text-sm text-stone-500">※お車でお越しの際は、近隣の駐車場をご利用ください。</p>
+          </div>
+          <div class="pt-6">
+            <a href="https://maps.google.com/?q=長野県塩尻市大門一番町8-2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 border border-brass text-brass text-sm tracking-widest hover:bg-brass hover:text-white transition-all duration-300 rounded-sm bg-transparent font-medium">
+              Google マップでルート案内を開く →
+            </a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 aspect-square md:aspect-[4/3] rounded-sm overflow-hidden shadow-lg">
+          <img class="w-full h-full object-cover" src="images/g5.jpg" alt="店舗外観または地図イメージ">
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVATION セクション -->
+    <section class="w-full py-24 md:py-32 px-6 bg-rich-black text-off-white border-t border-brass/20">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="mb-12">
+          <span class="font-eng text-xs tracking-[0.3em] text-brass uppercase block mb-3">Reservation</span>
+          <h2 class="text-2xl md:text-3xl tracking-widest font-medium">スムーズなご予約</h2>
+          <div class="w-12 h-[1px] bg-brass/50 mx-auto mt-6"></div>
+        </div>
+        
+        <p class="text-base text-mute-gray leading-loose mb-12 max-w-xl mx-auto font-light">
+          LINEでのご予約が最もスムーズです。<br>
+          下のボタンから「予約テンプレート」をコピーし、LINEに貼り付けて必要事項をご記入の上、送信してください。
+        </p>
+
+        <!-- テンプレートコピー枠 -->
+        <div class="bg-dark-sepia border border-brass/30 rounded-sm p-6 md:p-8 mb-12 text-left max-w-lg mx-auto shadow-xl relative overflow-hidden">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-5 pointer-events-none" src="images/g6.jpg" alt="予約背景">
+          <div class="relative z-10">
+            <div class="flex justify-between items-center mb-6 border-b border-brass/20 pb-3">
+              <span class="text-xs md:text-sm tracking-widest text-brass font-medium">ご予約用テンプレート</span> 
+              <span id="copy-toast" class="text-xs text-rich-black font-medium opacity-0 transition-opacity duration-300 bg-brass px-3 py-1 rounded-sm">コピーしました</span>
+            </div>
+            <textarea id="template-text" class="w-full h-64 bg-transparent text-sm md:text-base text-off-white leading-loose focus:outline-none resize-none font-sans select-all" readonly>【中華房 希彩 ご予約希望】
+1. お名前（フリガナ）：
+2. ご希望日時：　月　日（　）　:　〜
+3. 人数：大人　名 / お子様　名
+4. ご希望メニュー：
+5. アレルギーや苦手食材の有無：
+6. ご利用用途（誕生日・普段の食事等）：
+7. お祝いプレートの有無（希望文字）：
+8. ベビーチェアの要否（　脚）：</textarea> 
+            <button id="copy-btn" class="w-full mt-6 bg-brass text-rich-black text-sm tracking-widest py-4 hover:bg-off-white hover:text-rich-black transition-all flex items-center justify-center font-medium rounded-sm shadow-lg">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+              </svg> 
+              テンプレートをコピーする
+            </button>
+          </div>
+        </div>
+
+        <!-- LINEアクション＆QRコード表示エリア -->
+        <div class="max-w-lg mx-auto text-center border border-emerald-500/20 bg-emerald-950/10 p-8 rounded-sm">
+          <p class="text-sm text-mute-gray mb-6 font-light">スマホの方は、下記の緑のボタンをタップすると公式LINEが開きます。</p>
+          <a href="https://lin.ee/uI5Fj7J" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#06C755] text-white font-bold tracking-wider px-10 py-4 rounded-sm hover:bg-[#05b34c] transition-colors w-full sm:w-auto shadow-lg mb-8">
+            公式LINEで予約する
+          </a>
+          
+          <div class="pt-6 border-t border-brass/10">
+            <div class="w-36 h-36 bg-white mx-auto p-2 rounded shadow-md flex items-center justify-center">
+              <img src="1000012643.jpg" alt="公式LINE QRコード" class="w-full h-full object-contain">
+            </div>
+            <p class="text-[11px] text-mute-gray mt-3 font-light">PCでご覧の方は、スマホで上のQRコードを読み取ってください</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full bg-[#0a0a0a] border-t border-brass/20 py-12 text-center text-mute-gray">
+    <div class="mb-8">
+      <h3 class="text-lg tracking-widest text-off-white mb-2">中華房 希彩</h3>
+      <p class="text-sm tracking-widest font-eng text-brass">KISAI</p>
+    </div>
+    <p class="text-[11px] md:text-xs font-eng tracking-[0.2em] opacity-60">© 2026 中華房 希彩 All Rights Reserved.</p>
+  </footer>
+
+  <!-- 追従予約バー -->
+  <div id="floating-reservation-bar">
+    <div class="text-[11px] md:text-xs text-brass mb-3 tracking-widest font-eng font-medium">RESERVATION</div>
+    <div class="bar-buttons">
+      <a href="https://lin.ee/uI5Fj7J" target="_blank" rel="noopener noreferrer" class="btn-line-style shadow-lg">
+        LINEで予約する
+      </a>
+      <a href="tel:09034409615" class="btn-tel-style shadow-lg">
+        <span>電話で予約する</span>
+        <span class="tel-subtext font-eng">090-3440-9615</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // モバイルメニューの開閉
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // テンプレートコピー機能
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const textArea = document.getElementById('template-text');
+      textArea.select();
+      textArea.setSelectionRange(0, 99999); // モバイル対応
+      
+      navigator.clipboard.writeText(textArea.value).then(() => {
+        showToast();
+      }).catch(err => {
+        // Fallback
+        document.execCommand('copy');
+        showToast();
+      });
+    });
+
+    function showToast() {
+      const toast = document.getElementById('copy-toast');
+      toast.classList.remove('opacity-0');
+      setTimeout(() => toast.classList.add('opacity-0'), 2000);
+    }
+  </script>
+</body>
+</html>

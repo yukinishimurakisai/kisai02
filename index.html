@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中華房 希彩 KISAI | 塩尻の小さな特等席</title>
+    <style>
+        /* スマートフォンでの表示（スマホファースト）に合わせた
+           最低限必要なベースのデザインスタイル（黒×ゴールド）
+        */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px 100px; /* 下部に固定フッターの余白を確保 */
+        }
+        section {
+            padding: 60px 0 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .section-subtitle {
+            color: #bfa265;
+            letter-spacing: 2px;
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: normal;
+            margin-top: 0;
+            text-align: center;
+        }
+        .title-underline {
+            width: 40px;
+            height: 1px;
+            background-color: #bfa265;
+            margin: 15px auto 40px;
+        }
+        .category-title {
+            font-size: 20px;
+            color: #bfa265;
+            font-weight: normal;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .category-lead {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .menu-card {
+            border: 1px solid rgba(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.02);
+            padding: 25px 20px;
+            border-radius: 4px;
+        }
+        .menu-card h4 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        .price {
+            color: #bfa265;
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-family: 'Times New Roman', serif;
+        }
+        .menu-card p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #aaa;
+            margin: 0;
+        }
+        
+        /* ギャラリー用のグリッド */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .gallery-item {
+            aspect-ratio: 1/1;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 固定フッター（スマホで押しやすいスリム設計） */
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+        }
+        .fixed-footer a {
+            flex: 1;
+            text-align: center;
+            padding: 14px 5px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-line-footer {
+            background-color: #06C755;
+            color: #ffffff;
+        }
+        .btn-tel-footer {
+            background-color: #bfa265;
+            color: #ffffff;
+        }
+        .tel-sub {
+            font-size: 10px;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <section id="menu">
+        <p class="section-subtitle">MENU</p>
+        <h2 class="section-title">お品書き</h2>
+        <div class="title-underline"></div>
+
+        <div class="menu-category" style="margin-bottom: 50px;">
+            <h3 class="category-title">
+                お昼の献立
+                <span class="time" style="font-size: 12px; color: #888; font-family: sans-serif;">11:30 - 14:00 (L.O. 13:30)</span>
+            </h3>
+            
+            <p class="category-lead">
+                信州の豊かな素材を、お気軽に楽しむ小さな特等席のランチ。手作りの点心と本格的な味わいをお昼からご堪能ください。<br>
+                <span class="notice-text" style="color: #bfa265; font-size: 12px; display: block; margin-top: 8px; line-height: 1.5;">※点心は出来立ての一番美味しい状態でお出しするため、ご着席と同時に調理を開始いたします。</span>
+            </p>
+
+            <div class="menu-items">
+                <div class="menu-card">
+                    <h4>特製手包み点心と一品おかずの定食</h4>
+                    <p class="price">¥1,350 — ¥1,600</p>
+                    <p>
+                        一つひとつ真心込めて手で包むジューシーな点心と、隔週替わりの逸品を一度に楽しめる大満足のセット。お米は職人が火加減にこだわり、丁寧に土鍋で炊き上げるふっくら艶やかな仕上がりです。（※新潟県産コシヒカリを使用）
+                    </p>
+                    <p style="font-size: 12px; color: #777; margin-top: 8px;">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
+                </div>
+
+                <div class="menu-card">
+                    <h4>特製点心と手打ちこだわり麺セット</h4>
+                    <p class="price">¥1,350 — ¥1,980</p>
+                    <p>
+                        加水率と熟成時間にこだわり抜いた特製中華麺を使った、隔週替わりの楽しみな一杯。セットの点心はその時々の最高に美味しい状態のものを厳選して手包みいたします。
+                    </p>
+                    <p style="font-size: 12px; color: #777; margin-top: 8px;">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
+                </div>
+
+                <div class="menu-card">
+                    <h4>希彩 よくばりセット（麺・ご飯・おかず）</h4>
+                    <p class="price">¥2,200 — ¥2,600</p>
+                    <p>
+                        「手打ち麺も、土鍋ご飯も、おかずも、すべて欲張りに楽しみたい」という方のための特別なフルセット。希彩の魅力をひと通り堪能できる、お腹も心も満たされる大満足の組み合わせです。
+                    </p>
+                </div>
+            </div>
+
+            <div class="luxury-options-box" style="border: 1px solid #bfa265; padding: 20px; margin-top: 25px; border-radius: 4px; background-color: rgba(191,162,101,0.03);">
+                <h4 style="color: #bfa265; margin-top: 0; margin-bottom: 15px; font-size: 15px; letter-spacing: 1px;">◆ お昼を彩る「贅沢オプション」</h4>
+                <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 12px; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 14px;">
+                            <span>前菜付きへバージョンアップ</span><span style="color: #bfa265;">+¥400</span>
+                        </div>
+                        <p style="font-size: 12px; color: #999; margin: 4px 0 0 0;">通常の小鉢を、旬の厳選素材を盛り込んだ「特製前菜」へと変更いたします。</p>
+                    </li>
+                    <li style="margin-bottom: 12px; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 14px;">
+                            <span>特製デザート盛り合わせ</span><span style="color: #bfa265;">+¥500</span>
+                        </div>
+                        <p style="font-size: 12px; color: #999; margin: 4px 0 0 0;">食後の余韻にゆったりと浸る、贅沢な別腹デザート。</p>
+                    </li>
+                    <li>
+                        <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 14px;">
+                            <span>ギルティーな昼飲み</span><span style="color: #bfa265;">各¥450〜</span>
+                        </div>
+                        <p style="font-size: 12px; color: #999; margin: 4px 0 0 0;">ひとくち生ビール、紹興酒、カウンター限定酒など。お昼休みの背徳感、または休日の贅沢に極上の一杯をどうぞ。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="menu-category" style="margin-bottom: 30px;">
+            <h3 class="category-title">
+                夜のコース
+                <span class="time" style="font-size: 12px; color: #888; font-family: sans-serif;">17:30 - 21:00 / 当日15:00までに要予約</span>
+            </h3>
+            
+            <p class="category-lead">
+                カウンター越しに届く湯気と音。時間をかけて発酵・熟成させた自家製調味料をベースに、厳選した器で彩る本格モダン中華のコース。
+            </p>
+
+            <div class="menu-card" style="text-align: center;">
+                <h4>【希彩 おまかせコース】</h4>
+                <p class="price" style="font-size: 18px; margin-bottom: 20px;">¥6,600 / ¥8,800〜</p>
+                <div style="width: 30px; height: 1px; background-color: rgba(255,255,255,0.2); margin: 0 auto 20px;"></div>
+                <p style="color: #fff; margin-bottom: 20px;">
+                    前菜、点心「長野県支部金賞受賞 水餃子」、温菜、主菜、特製熟成中華麺、特製デザート盛り合わせ
+                </p>
+                <p style="color: #aaa; text-align: left;">
+                    アレルギーや苦手食材など伺ってお客さまに最適なディナーを提案します。誕生日やお祝いの席などでもご利用ください。特製デザートプレートご用意させていただきます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="gallery">
+        <p class="section-subtitle">GALLERY</p>
+        <h2 class="section-title">情景</h2>
+        <div class="title-underline"></div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="gallery1.jpg" alt="情景1"></div>
+            <div class="gallery-item"><img src="gallery2.jpg" alt="情景2"></div>
+            <div class="gallery-item"><img src="gallery3.jpg" alt="情景3"></div>
+            <div class="gallery-item"><img src="gallery4.jpg" alt="情景4"></div>
+            <div class="gallery-item"><img src="gallery5.jpg" alt="情景5"></div>
+            <div class="gallery-item"><img src="gallery6.jpg" alt="情景6"></div>
+        </div>
+    </section>
+
+
+    <section id="access">
+        <p class="section-subtitle">ACCESS</p>
+        <h2 class="section-title">店舗所在地</h2>
+        <div class="title-underline"></div>
+
+        <div class="access-info" style="margin-bottom: 30px; text-align: center;">
+            <h3 style="font-size: 18px; font-weight: normal; margin-bottom: 15px; color: #bfa265;">中華房 希彩 KISAI</h3>
+            <p style="font-size: 14px; margin: 5px 0; color: #ccc;">〒399-0736</p>
+            <p style="font-size: 16px; margin: 5px 0; color: #fff; font-weight: bold;">長野県塩尻市大門一番町8-2</p>
+            <p style="font-size: 13px; color: #888; margin-top: 15px;">※お車でお越しの際は、近環境の駐車場をご利用ください。</p>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <a href="https://maps.google.com/?q=長野県塩尻市大門一番町8-2" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; border: 1px solid #bfa265; color: #bfa265; padding: 15px 0; text-decoration: none; font-size: 14px; border-radius: 4px; font-weight: bold;">
+                Google マップでルート案内を開く →
+            </a>
+        </div>
+
+        <div style="width: 100%; aspect-ratio: 16/9; background-color: #222; display: flex; align-items: center; justify-content: center; border-radius: 4px; overflow: hidden;">
+            <img src="store-exterior.jpg" alt="店舗外観イメージ" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </section>
+
+
+    <section id="reservation">
+        <p class="section-subtitle">RESERVATION</p>
+        <h2 class="section-title">スムーズなご予約</h2>
+        <div class="title-underline"></div>
+        
+        <p class="reservation-lead" style="text-align: center; margin-bottom: 30px;">
+            LINEでのご予約が最もスムーズです。<br>
+            下のボタンから「予約テンプレート」をコピーし、LINEに貼り付けて必要事項をご記入の上、送信してください。
+        </p>
+
+        <div class="template-box" style="border: 1px solid rgba(255,255,255,0.1); background-color: rgba(255,255,255,0.02); padding: 25px 20px; border-radius: 4px; margin-bottom: 35px;">
+            <p style="color: #bfa265; font-size: 12px; margin-top: 0; margin-bottom: 15px; font-weight: bold;">ご予約用テンプレート</p>
+            <div style="height: 1px; background-color: rgba(255,255,255,0.1); margin-bottom: 20px;"></div>
+            
+            <pre id="template-text" style="font-family: inherit; font-size: 13px; line-height: 1.8; color: #fff; margin: 0; white-space: pre-wrap;">【中華房 希彩 ご予約希望】
+1. お名前（フリガナ）：
+2. ご希望日時：　月　日（ ） ： 〜
+3. 人数：大人　名 / お子様　名
+4. ご希望メニュー：
+5. アレルギーや苦手食材の有無：
+6. ご利用用途（誕生日・普段の食事等）：
+7. お祝いプレートの有無（希望文字）：
+8. ベビーチェアの要否（　脚）：</pre>
+
+            <button onclick="copyTemplate()" style="display: block; width: 100%; background-color: #bfa265; color: #111; border: none; padding: 14px 0; margin-top: 25px; font-size: 14px; font-weight: bold; border-radius: 4px; cursor: pointer;">
+                📋 テンプレートをコピーする
+            </button>
+        </div>
+
+        <div class="line-action-area" style="text-align: center; background-color: rgba(6,199,85,0.03); border: 1px solid rgba(6,199,85,0.2); padding: 30px 20px; border-radius: 6px;">
+            <p style="font-size: 14px; color: #ccc; margin-top: 0; margin-bottom: 20px;">
+                スマホの方は、下記の緑のボタンをタップすると公式LINEが開きます。
+            </p>
+            
+            <a href="https://lin.ee/uI5Fj7J" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #06C755; color: #fff; padding: 16px 30px; border-radius: 8px; font-weight: bold; text-decoration: none; width: 100%; max-width: 320px; box-sizing: border-box; font-size: 16px; box-shadow: 0 4px 12px rgba(6,199,85,0.2);">
+                公式LINEで予約する
+            </a>
+
+            <div class="qr-code-wrapper" style="margin-top: 25px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 20px;">
+                <div style="width: 140px; height: 140px; background-color: #fff; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: 4px; padding: 5px;">
+                    <img src="1000012643.jpg" alt="公式LINE QRコード" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <p style="font-size: 11px; color: #888; margin-top: 8px; margin-bottom: 0;">PCでご覧の方は、スマホで上のQRコードを読み取ってください</p>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<div class="fixed-footer">
+    <a href="https://lin.ee/uI5Fj7J" target="_blank" rel="noopener noreferrer" class="btn-line-footer">
+        LINEで予約する
+    </a>
+    <a href="tel:090-3440-9615" class="btn-tel-footer">
+        電話で予約する
+        <span class="tel-sub">090-3440-9615</span>
+    </a>
+</div>
+
+<script>
+function copyTemplate() {
+    var templateText = document.getElementById("template-text").innerText;
+    navigator.clipboard.writeText(templateText).then(function() {
+        alert("予約テンプレートをコピーしました！LINEに貼り付けてご使用ください。");
+    }).catch(function(err) {
+        alert("コピーに失敗しました。文字を直接選択してコピーしてください。");
+    });
+}
+</script>
+
+</body>
+</html>

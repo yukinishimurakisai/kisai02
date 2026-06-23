@@ -67,65 +67,6 @@
       }
       .bar-buttons { flex-direction: column; gap: 16px; padding: 0; }
     }
-  /* ANNIVERSARYセクションの背景にチョコペン画像を薄く添える */
-      /* ANNIVERSARYセクションの背景にチョコペン画像を薄く添える */
-    #anniversary {
-      position: relative;
-    }
-    #anniversary::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* チョコペン画像を中央に配置 */
-      background-image: url('images/choko3.jpg'); 
-      background-repeat: no-repeat;
-      background-position: center center; 
-      background-size: 400px auto; /* 少し大きめに調整しました */
-      opacity: 0.15;
-      pointer-events: none;
-      z-index: 0; /* 文字よりも奥に表示 */
-    }
-    /* 文字が画像と重なって読みにくくならないよう調整 */
-    #anniversary > div {
-      position: relative;
-      z-index: 1;
-    }
-/* 1. セクション全体に背景画像を表示 */
-#anniversary {
-  position: relative;
-  /* 背景画像が隠れないように、HTML側の bg-off-white を上書きする指定 */
-  background-color: transparent !important; 
-}
-
-/* 2. 背景画像を配置 */
-#anniversary::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('images/choko3.jpg');
-  background-repeat: no-repeat;
-  background-position: center 30%; /* 少し上に配置 */
-  background-size: 500px auto;
-  opacity: 0.2; /* 薄さ */
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* 3. 文字が見やすいように、文字エリアにだけ背景色を乗せる */
-#anniversary > div {
-  position: relative;
-  z-index: 1;
-  background-color: rgba(252, 251, 250, 0.9); /* 少し透明な白背景 */
-  padding: 40px 20px;
-  border-radius: 8px;
-}
-
 
   </style>
 </head>

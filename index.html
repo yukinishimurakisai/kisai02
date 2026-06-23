@@ -68,26 +68,32 @@
       .bar-buttons { flex-direction: column; gap: 16px; padding: 0; }
     }
   /* ANNIVERSARYセクションの背景にチョコペン画像を薄く添える */
-  #anniversary {
-    position: relative;
-  }
+      /* ANNIVERSARYセクションの背景にチョコペン画像を薄く添える */
+    #anniversary {
+      position: relative;
+    }
+    #anniversary::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* チョコペン画像を中央に配置 */
+      background-image: url('images/choko3.jpg'); 
+      background-repeat: no-repeat;
+      background-position: center center; 
+      background-size: 400px auto; /* 少し大きめに調整しました */
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0; /* 文字よりも奥に表示 */
+    }
+    /* 文字が画像と重なって読みにくくならないよう調整 */
+    #anniversary > div {
+      position: relative;
+      z-index: 1;
+    }
 
-  #anniversary::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* GitHubのimagesフォルダ内の画像を読み込みます */
-    background-image: url('images/choko3.jpg'); 
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: 300px auto;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1; /* コンテンツの下に表示されるように設定 */
-  }
 
   </style>
 </head>

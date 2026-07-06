@@ -80,23 +80,47 @@
   <header class="fixed top-0 w-full z-40 backdrop-blur-md bg-rich-black/90 border-b border-brass/20">
     <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
       <h1 class="text-xl md:text-2xl tracking-widest text-off-white font-medium">中華房 希彩</h1>
-      <nav class="hidden md:flex gap-8">
-        <a href="#about" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ABOUT</a>
-        <a href="#menu" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">MENU</a>
-        <a href="#access" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ACCESS</a>
-      </nav>
+      
+      <!-- ナビゲーションとSNSアイコンのセット -->
+      <div class="hidden md:flex items-center gap-8">
+        <nav class="flex gap-8 border-r border-brass/20 pr-8">
+          <a href="#about" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ABOUT</a>
+          <a href="#menu" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">MENU</a>
+          <a href="#access" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ACCESS</a>
+        </nav>
+        
+        <!-- ヘッダー用SNSアイコン -->
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/kisai.shiojiri" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass transition-colors" title="Instagram">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"></path></svg>
+          </a>
+          <a href="https://www.facebook.com/share/1BfRo4jSNZ/" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass transition-colors" title="Facebook">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+          </a>
+        </div>
+      </div>
+
       <button id="mobile-menu-btn" class="md:hidden text-off-white focus:outline-none">
         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
       </button>
     </div>
+    
+    <!-- モバイル用メニュー（スマホ時） -->
     <div id="mobile-menu" class="hidden md:hidden bg-rich-black border-b border-brass/20 absolute w-full left-0 top-[60px]">
       <nav class="flex flex-col text-center py-4">
         <a href="#about" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">ABOUT</a>
         <a href="#menu" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">MENU</a>
         <a href="#access" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">ACCESS</a>
+        
+        <!-- スマホメニュー内SNSリンク -->
+        <div class="flex justify-center gap-6 py-3 mt-2 border-t border-brass/10 pt-4">
+          <a href="https://www.instagram.com/kisai.shiojiri" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass text-xs font-eng tracking-widest">INSTAGRAM</a>
+          <a href="https://www.facebook.com/share/1BfRo4jSNZ/" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass text-xs font-eng tracking-widest">FACEBOOK</a>
+        </div>
       </nav>
     </div>
   </header>
+
 
   <main>
     <!-- ヒーローセクション -->

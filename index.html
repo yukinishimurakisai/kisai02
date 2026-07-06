@@ -81,13 +81,13 @@
     <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
       <h1 class="text-xl md:text-2xl tracking-widest text-off-white font-medium">中華房 希彩</h1>
       
-      <!-- ナビゲーションとSNSアイコンのセット -->
+      <!-- ナビゲーションとSNSアイコン의 セット -->
       <div class="hidden md:flex items-center gap-8">
         <nav class="flex gap-8 border-r border-brass/20 pr-8">
           <a href="#about" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ABOUT</a>
           <a href="#menu" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">MENU</a>
-          li><a href="#craft">CRAFT</a></li>
-  <li><a href="#anniversary">ANNIVERSARY</a></li>
+          <li><a href="#craft">CRAFT</a></li>
+          <li><a href="#anniversary">ANNIVERSARY</a></li>
           <a href="#access" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ACCESS</a>
         </nav>
         
@@ -116,23 +116,27 @@
         <a href="#menu" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">MENU</a>
         <a href="#access" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">ACCESS</a>
 
-        <!-- スマホメニュー内SNSリンク -->
-        <div class="flex justify-center gap-6 py-3 mt-2 border-t border-brass/10 pt-4">
-          <a href="https://www.instagram.com/kisai.shiojiri" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass text-xs font-eng tracking-widest">INSTAGRAM</a>
-          <a href="https://www.facebook.com/share/1BfRo4jSNZ/" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass text-xs font-eng tracking-widest">FACEBOOK</a>
+        <!-- スマホメニュー内SNSリンク（ロゴアイコン追加＆頭文字のみ大文字に変更） -->
+        <div class="flex justify-center gap-6 py-4 mt-2 border-t border-brass/10 pt-4">
+          <a href="https://www.instagram.com/kisai.shiojiri" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass text-xs font-eng tracking-widest flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"></path></svg>
+            Instagram
+          </a>
+          <a href="https://www.facebook.com/share/1BfRo4jSNZ/" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass text-xs font-eng tracking-widest flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+            Facebook
+          </a>
         </div>
       </nav>
     </div>
   </header>
 
-
   <main>
     <!-- ヒーローセクション -->
     <section id="hero" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
-     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover scale-105">
-  <source src="hero-loop.mp4" type="video/mp4">
-</video>
-
+      <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover scale-105">
+        <source src="hero-loop.mp4" type="video/mp4">
+      </video>
       <div class="absolute inset-0 bg-gradient-to-b from-rich-black/70 via-rich-black/40 to-rich-black"></div>
       <div class="relative z-10 text-center px-6 max-w-3xl flex flex-col items-center mt-16">
         <span class="font-eng text-sm tracking-[0.3em] uppercase mb-6 text-brass">The Private Gastronomy</span>
@@ -190,10 +194,8 @@
         <div class="w-12 h-[1px] bg-brass mx-auto my-6"></div>
         <div class="grid md:grid-cols-2 gap-12 items-center text-left mt-12">
           <div class="space-y-6">
-            <p class="text-base leading-loose font-light text-stone-700">希彩という名前は、私たちにとって大切な家族の名から一文字ずつ授かりました。
-​だからこそ、ここでお出しする料理は、すべてが妥協の無い「大切な誰かのために」という想いから生まれています。その日の湿度に合わせて粉を練り、心を込めて皮を包む。湯気が立ち上るその一瞬に、希彩という店に込めた私たちのすべてを注ぎ込んでいます。</p>
-            <p class="text-base leading-loose font-light text-stone-700">厨房で奏でる調理の音、店内に満ちる香り。
-信州の旬と職人の真髄が重なり合う、希彩の食卓へ。今日は、どんな彩りをお届けしましょうか。</p>
+            <p class="text-base leading-loose font-light text-stone-700">希彩という名前は、私たちにとって大切な家族の名から一文字ずつ授かりました。​<br>だからこそ、ここでお出しする料理は、すべてが妥妥の無い「大切な誰かのために」という想いから生まれています。その日の湿度に合わせて粉を練り、心を込めて皮を包む。湯気が立ち上るその一瞬に、希彩という店に込めた私たちのすべてを注ぎ込んでいます。</p>
+            <p class="text-base leading-loose font-light text-stone-700">厨房で奏でる調理の音、店内に満ちる香り。<br>信州の旬と職人の真髄が重なり合う、希彩の食卓へ。今日は、どんな彩りをお届けしましょうか。</p>
           </div>
           <div class="relative aspect-square md:aspect-[4/3]">
             <img class="w-full h-full object-cover rounded shadow-lg" src="images/m1.jpg" alt="希彩の空間">
@@ -212,10 +214,8 @@
         <div class="space-y-8">
           <span class="font-eng text-xs tracking-[0.3em] text-brass block uppercase">Our Craftsmanship— 香りを紡ぐ、手包みの技</span>
           <h2 class="text-2xl md:text-3xl tracking-widest font-medium text-off-white">手打ち・手包みにこだわる理由</h2>
-          <p class="text-base leading-loose text-mute-gray font-light">麺や餃子の皮を「一から手作業」でつくるのは、素材の持ち味を最大限に引き出すため。
-            その日の気候に合わせて熟成時間を繊細に見極め、職人がひとつずつ丁寧に仕立てています。</p>
-          <p class="text-base leading-loose text-mute-gray font-light">生地を練り、寝かせ、一つひとつ包み上げる。
-湯気と共に立ち上る豊かな香りと、もっちりとした皮の中で弾ける信州の恵み。確かな手仕事が生む、ここでしか味わえない一皿をご堪能ください。</p>
+          <p class="text-base leading-loose text-mute-gray font-light">麺や餃子の皮を「一から手作業」でつくるのは、素材の持ち味を最大限に引き出すため。<br>その日の気候に合わせて熟成時間を繊細に見極め、職人がひとつずつ丁寧に仕立てています。</p>
+          <p class="text-base leading-loose text-mute-gray font-light">生地を練り、寝かせ、一つひとつ包み上げる。<br>湯気と共に立ち上る豊かな香りと、もっちりとした皮の中で弾ける信州の恵み。確かな手仕事が生む、ここでしか味わえない一皿をご堪能ください。</p>
           <div class="pt-6">
             <a href="https://share.google/86D9eNO3dSVZS6Tbh" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 border border-brass text-brass text-sm tracking-widest hover:bg-brass hover:text-rich-black transition-all duration-300 rounded-sm">
               日本中国料理協会 金賞受賞 水餃子の詳細へ →
@@ -224,7 +224,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ANNIVERSARY セクション -->
     <section id="anniversary" class="w-full py-24 md:py-32 px-6 bg-off-white text-rich-black">
@@ -237,8 +236,7 @@
         <div class="grid md:grid-cols-2 gap-16 items-center">
           <div class="space-y-6 text-base text-stone-700 font-light leading-loose">
             <p class="font-medium text-stone-900 text-lg">大切な節目を、希彩のおもてなしで。</p>
-            <p>人生の特別な「ハレの日」を、より心に残るものに。
-お誕生日や結婚記念日、ご両家のお顔合わせなど、お客様の想いに寄り添ったお祝いの席を演出いたします。</p>
+            <p>人生の特別な「ハレの日」を、より心に残るものに。<br>お誕生日や結婚記念日、ご両家のお顔合わせなど、お客様の想いに寄り添ったお祝いの席を演出いたします。</p>
             <ul class="space-y-4 bg-stone-100 p-8 border-l-4 border-brass rounded-r-sm text-sm md:text-base">
               <li><span class="font-medium text-brass">◆ 特製メッセージプレート：</span> 大切な方への贈り物として、デザートプレートにチョコペンでメッセージを添えてお出しします。想いを伝えるお手伝いをさせてください。</li>
               <li><span class="font-medium text-brass">◆ お子様連れのご家族へ：</span> ベビーベッドや小さなお子様用カトラリーも用意しております。ご家族皆様で、気兼ねなく美味しい時間をお過ごしください。</li>
@@ -262,112 +260,111 @@
           <div class="w-12 h-[1px] bg-brass/50 mx-auto mt-6"></div>
         </div>
 
-        <!-- 昼のランチ（詳細版） -->
+        <!-- 昼のランチ -->
         <div class="mb-24 relative">
-                    <div class="flex flex-col md:flex-row md:items-baseline border-b border-brass/20 pb-4 mb-8">
-              <h3 class="text-xl md:text-2xl tracking-widest text-brass font-medium">お昼の献立</h3>
-              <p class="font-eng text-xs mt-3 md:mt-0 md:ml-6 tracking-wider text-mute-gray">11:30 - 14:00 (L.O. 13:30)</p>
-            </div>
+          <div class="flex flex-col md:flex-row md:items-baseline border-b border-brass/20 pb-4 mb-8">
+            <h3 class="text-xl md:text-2xl tracking-widest text-brass font-medium">お昼の献立</h3>
+            <p class="font-eng text-xs mt-3 md:mt-0 md:ml-6 tracking-wider text-mute-gray">10:00 - 16:00</p>
+          </div>
 
-            <div class="mb-8 p-6 border border-brass/20 bg-dark-sepia/20 rounded-sm">
-              <p class="text-base text-off-white font-bold mb-3">■ お昼のセットメニュー</p>
-              <p class="text-sm text-mute-gray leading-loose font-light">
-                全セットに「自家製点心」「季節の小鉢」をお付けいたします。<br>
-                一つひとつ丁寧に手包みする点心に、香りと食感にこだわった手打ち麺。そして、旬の食材を鮮やかに仕上げる本格おかずと、土鍋でふっくら炊き上げた白米。希彩の「美味しい」を余すことなく詰め込んだ、温かなお昼のひとときをお愉しみください。
-              </p>
-            </div>
-
-            <p class="text-sm text-brass font-light mb-10 border-l border-brass/40 pl-4 py-1 bg-dark-sepia/20">
-              ※各セット数に限りがございます。品切れの際はご容赦ください
+          <div class="mb-8 p-6 border border-brass/20 bg-dark-sepia/20 rounded-sm">
+            <p class="text-base text-off-white font-bold mb-3">■ お昼のセットメニュー</p>
+            <p class="text-sm text-mute-gray leading-loose font-light">
+              全セットに「自家製点心」「季節の小鉢」をお付けいたします。<br>
+              一つひとつ丁寧に手包みする点心に、香りと食感にこだわった手打ち麺。そして、旬の食材を鮮やかに仕上げる本格おかずと、土鍋でふっくら炊き上げた白米。希彩の「美味しい」を余すことなく詰め込んだ、温かなお昼のひとときをお愉しみください。
             </p>
+          </div>
 
+          <p class="text-sm text-brass font-light mb-10 border-l border-brass/40 pl-4 py-1 bg-dark-sepia/20">
+            準備なくなり次第終了<br>
+            ※各セット数に限りがございます。品切れの際はご容赦ください。
+          </p>
 
-            <!-- 3カラムメニューカード配置 -->
-            <div class="grid md:grid-cols-3 gap-6">
-              <!-- 1. 定食 -->
-              <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
-                <div>
-                  <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">特製手包み点心と本格おかずの定食</h4>
-                  <p class="text-base text-brass font-eng tracking-wider mb-4">¥1,350〜</p>
-                  <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
-                    炊き立ての土鍋ご飯を主役に。隔週替わりの本格中華おかずと手包み点心で、温かなお昼のひとときを。
-                  </p>
-                </div>
-                <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
+          <!-- 3カラムメニューカード配置 -->
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- 1. 定食 -->
+            <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
+              <div>
+                <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">特製手包み点心と本格おかずの定食</h4>
+                <p class="text-base text-brass font-eng tracking-wider mb-4">¥1,350〜</p>
+                <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
+                  炊き立ての土鍋ご飯を主役に。隔週替わりの本格中華おかずと手包み点心で、温かなお昼のひとときを。
+                </p>
               </div>
-
-              <!-- 2. 麺セット -->
-              <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
-                <div>
-                  <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">特製手包み点心とこだわり手打麺</h4>
-                  <p class="text-base text-brass font-eng tracking-wider mb-4">¥1,350〜</p>
-                  <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
-                    こだわりの自家製手打ち麺と、その時一番美味しい点心。麺の香りと食感を楽しむ、軽やかなランチセットです。
-                  </p>
-                </div>
-                <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
-              </div>
-
-              <!-- 3. よくばりセット -->
-              <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
-                <div>
-                  <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">希彩 よくばりセット</h4>
-                  <p class="text-base text-brass font-eng tracking-wider mb-4">¥2,200〜</p>
-                  <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
-                    「今日はどちらも譲れない」という方へ。手打ち麺も、土鍋ご飯も、おかずも、すべて欲張りに楽しめます。
-                  </p>
-                </div>
-                <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">希彩の魅力を欲張りに重ねた、お腹も心も満たされる大満足の組み合わせです。</p>
-              </div>
+              <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
             </div>
 
-            <!-- 贅沢オプションエリア（Tailwind最適化版） -->
-            <div class="mt-8 border border-brass/30 bg-dark-sepia/30 p-6 md:p-8 rounded-sm">
-              <h4 class="text-sm md:text-base tracking-widest text-brass font-medium mb-6 flex items-center">
-                <span class="inline-block w-2 h-2 bg-brass mr-2 rotate-45"></span> お昼を彩る「贅沢オプション」
-              </h4>
-              <ul class="space-y-6">
-                <li class="border-b border-brass/10 pb-4 lg:flex lg:justify-between lg:items-start lg:gap-8">
-                  <div class="flex-1">
-                    <div class="flex justify-between items-baseline mb-1">
-                      <span class="text-sm md:text-base font-medium text-off-white">前菜付きへバージョンアップ</span>
-                      <span class="text-brass font-eng text-sm font-medium">+¥650</span>
-                    </div>
-                    <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">通常の小鉢を、旬の厳選素材を盛り込んだ「特製前菜」へと変更いたします。</p>
-                  </div>
-                </li>
-                <li class="border-b border-brass/10 pb-4 lg:flex lg:justify-between lg:items-start lg:gap-8">
-                  <div class="flex-1">
-                    <div class="flex justify-between items-baseline mb-1">
-                      <span class="text-sm md:text-base font-medium text-off-white">特製デザート盛り合わせ</span>
-                      <span class="text-brass font-eng text-sm font-medium">+¥650</span>
-                    </div>
-                    <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">食後の余韻にゆったりと浸る、贅沢な別腹デザート。</p>
-                  </div>
-                </li>
-                <li class="lg:flex lg:justify-between lg:items-start lg:gap-8">
-                  <div class="flex-1">
-                    <div class="flex justify-between items-baseline mb-1">
-                      <span class="text-sm md:text-base font-medium text-off-white">お昼の美酒</span>
-                      <span class="text-brass font-eng text-sm font-medium">各¥450〜</span>
-                    </div>
-                    <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">ひとくち生ビール、紹興酒、カウンター限定酒など。お昼休みの背徳感、または休日の贅沢に極上の一杯をどうぞ。</p>
-                  </div>
-                </li>
-              </ul>
+            <!-- 2. 麺セット -->
+            <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
+              <div>
+                <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">特製手包み点心とこだわり手打麺</h4>
+                <p class="text-base text-brass font-eng tracking-wider mb-4">¥1,350〜</p>
+                <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
+                  こだわりの自家製手打ち麺と、その時一番美味しい点心。麺の香りと食感を楽しむ、軽やかなランチセットです。
+                </p>
+              </div>
+              <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">※少し軽めのボリュームに仕立てております。お好みの「贅沢オプション」と組み合わせてお楽しみください。</p>
             </div>
+
+            <!-- 3. よくばりセット -->
+            <div class="p-6 border border-brass/20 bg-dark-sepia/40 rounded-sm hover:border-brass/40 transition-colors flex flex-col justify-between">
+              <div>
+                <h4 class="text-base md:text-lg tracking-wider font-medium mb-3 text-off-white">希彩 よくばりセット</h4>
+                <p class="text-base text-brass font-eng tracking-wider mb-4">¥2,200〜</p>
+                <p class="text-xs md:text-sm text-mute-gray leading-loose font-light">
+                  「今日はどちらも譲れない」という方へ。手打ち麺も、土鍋ご飯も、おかずも、すべて欲張りに楽しめます。
+                </p>
+              </div>
+              <p class="text-[11px] text-brass/70 mt-4 pt-4 border-t border-brass/10">希彩の魅力を欲張りに重ねた、お腹も心も満たされる大満足の組み合わせです。</p>
+            </div>
+          </div>
+
+          <!-- 贅沢オプションエリア -->
+          <div class="mt-8 border border-brass/30 bg-dark-sepia/30 p-6 md:p-8 rounded-sm">
+            <h4 class="text-sm md:text-base tracking-widest text-brass font-medium mb-6 flex items-center">
+              <span class="inline-block w-2 h-2 bg-brass mr-2 rotate-45"></span> お昼を彩る「贅沢オプション」
+            </h4>
+            <ul class="space-y-6">
+              <li class="border-b border-brass/10 pb-4 lg:flex lg:justify-between lg:items-start lg:gap-8">
+                <div class="flex-1">
+                  <div class="flex justify-between items-baseline mb-1">
+                    <span class="text-sm md:text-base font-medium text-off-white">前菜付きへバージョンアップ</span>
+                    <span class="text-brass font-eng text-sm font-medium">+¥650</span>
+                  </div>
+                  <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">通常の小鉢を、旬の厳選素材を盛り込んだ「特製前菜」へと変更いたします。</p>
+                </div>
+              </li>
+              <li class="border-b border-brass/10 pb-4 lg:flex lg:justify-between lg:items-start lg:gap-8">
+                <div class="flex-1">
+                  <div class="flex justify-between items-baseline mb-1">
+                    <span class="text-sm md:text-base font-medium text-off-white">特製デザート盛り合わせ</span>
+                    <span class="text-brass font-eng text-sm font-medium">+¥650</span>
+                  </div>
+                  <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">食後の余韻にゆったりと浸る、贅沢な別腹デザート。</p>
+                </div>
+              </li>
+              <li class="lg:flex lg:justify-between lg:items-start lg:gap-8">
+                <div class="flex-1">
+                  <div class="flex justify-between items-baseline mb-1">
+                    <span class="text-sm md:text-base font-medium text-off-white">お昼の美酒</span>
+                    <span class="text-brass font-eng text-sm font-medium">各¥450〜</span>
+                  </div>
+                  <p class="text-xs md:text-sm text-mute-gray leading-relaxed font-light">ひとくち生ビール、紹興酒、カウンター限定酒など。お昼休みの背徳感、または休日の贅沢に極上の一杯をどうぞ。</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
 
-                <!-- 夜のコース -->
-        <div class="relative">
+        <!-- 夜のコース -->
+        <div class="relative mb-24">
           <div class="hidden lg:block absolute left-0 top-0 w-1/4 h-full opacity-10 pointer-events-none">
             <img class="w-full h-full object-cover rounded-sm" src="images/g3.jpg" alt="ディナー背景">
           </div>
           <div class="relative z-10">
             <div class="flex flex-col md:flex-row md:items-baseline border-b border-brass/20 pb-4 mb-10">
               <h3 class="text-xl md:text-2xl tracking-widest text-brass font-medium">夜のコース</h3>
-              <p class="font-eng text-xs mt-3 md:mt-0 md:ml-6 tracking-wider text-mute-gray">17:30 - 21:00 / ※前日13:00までに要予約</p>
+              <p class="font-eng text-xs mt-3 md:mt-0 md:ml-6 tracking-wider text-mute-gray">17:00 - （※前日13:00までの完全予約制・予約がない日は営業なし）</p>
             </div>
             
             <p class="text-base text-mute-gray mb-10 font-light tracking-wide leading-loose">
@@ -410,10 +407,20 @@
                 </p>
               </div>
             </div>
-
           </div>
         </div>
 
+        <!-- 営業スケジュール・定休日案内 -->
+        <div class="border-t border-brass/30 pt-16 max-w-2xl mx-auto text-center">
+          <h3 class="text-lg md:text-xl tracking-widest text-brass font-medium mb-4">定休日・最新の営業状況</h3>
+          <p class="text-sm md:text-base text-off-white font-medium mb-4">定休日：不定休</p>
+          <p class="text-xs md:text-sm text-mute-gray leading-loose font-light text-left md:text-center">
+            メーカーズディナー等のイベント開催時や、貸切営業時はお休みとなる場合がございます。<br class="hidden md:inline">
+            最新の営業スケジュールは公式LINE・Instagramにて毎月配信しておりますので、そちらをご確認ください。
+          </p>
+        </div>
+
+      </div>
     </section>
 
     <!-- GALLERY セクション -->
@@ -538,6 +545,7 @@
     </section>
   </main>
 
+  <!-- フッター（頭文字のみ大文字に変更） -->
   <footer class="w-full bg-[#0a0a0a] border-t border-brass/20 py-12 text-center text-mute-gray">
     <div class="mb-8">
       <h3 class="text-lg tracking-widest text-off-white mb-2">中華房 希彩</h3>
@@ -551,25 +559,23 @@
         </a>
       </div>
 
-      <!-- SNSリンク -->
+      <!-- SNSリンク（頭文字大文字に変更） -->
       <div class="flex justify-center gap-6 mt-6">
         <!-- インスタグラム -->
         <a href="https://www.instagram.com/kisai.shiojiri" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass transition-colors flex items-center gap-1.5 text-xs tracking-widest font-eng">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"></path></svg>
-          INSTAGRAM
+          Instagram
         </a>
         <!-- フェイスブック -->
         <a href="https://www.facebook.com/share/1BfRo4jSNZ/" target="_blank" rel="noopener noreferrer" class="text-mute-gray hover:text-brass transition-colors flex items-center gap-1.5 text-xs tracking-widest font-eng">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
-          FACEBOOK
+          Facebook
         </a>
       </div>
 
     </div>
     <p class="text-[11px] md:text-xs font-eng tracking-[0.2em] opacity-60">© 2026 中華房 希彩 All Rights Reserved.</p>
   </footer>
-
-
 
   <!-- 追従予約バー -->
   <div id="floating-reservation-bar">

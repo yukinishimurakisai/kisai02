@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご予約・見積もりシミュレーター | 中華房 希彩</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1a1a1a;
+            --gold: #D4AF37;
+            --gold-dark: #b8972e;
+            --text-main: #f5f5f5;
+            --text-muted: #aaaaaa;
+            --border-color: #333333;
+            --accent-red: #3D0C11;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Serif JP', serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 120px; /* For sticky footer */
+        }
+
+        /* Header & Message */
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        header h1 {
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .chef-message {
+            background-color: var(--surface-color);
+            border: 1px solid var(--gold);
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .chef-message::before {
+            content: "”";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 40px;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        /* Form Sections */
+        .section-title {
+            font-size: 18px;
+            color: var(--gold);
+            margin: 40px 0 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .form-group label .required {
+            color: #ff4444;
+            font-size: 12px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .note {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* Radio & Card Selectors */
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .radio-label input {
+            margin-right: 8px;
+            accent-color: var(--gold);
+        }
+
+        .card-selector {
+            display: block;
+            position: relative;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .card-selector input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .card-content {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 6px;
+            background-color: var(--surface-color);
+            transition: all 0.3s;
+        }
+        .card-selector input:checked ~ .card-content {
+            border-color: var(--gold);
+            background-color: rgba(212, 175, 55, 0.05);
+        }
+        .course-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        .course-price {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .course-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Counter */
+        .counter-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .counter-btn {
+            background-color: var(--border-color);
+            color: var(--text-main);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .counter-val {
+            font-size: 18px;
+            min-width: 30px;
+            text-align: center;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        /* Pairing breakdown */
+        .pairing-box {
+            background-color: #1a150c;
+            border: 1px solid var(--gold-dark);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .pairing-box.active {
+            display: block;
+        }
+        .pairing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* Output Template */
+        .template-preview {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 14px;
+            white-space: pre-wrap;
+            color: #ddd;
+            margin-top: 20px;
+            border-radius: 4px;
+            user-select: all;
+        }
+
+        /* Sticky Footer */
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--surface-color);
+            border-top: 2px solid var(--gold);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+        }
+        .total-price-box {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .total-price-box .label {
+            font-size: 12px;
+            color: var(--gold);
+        }
+        .total-price-box .price {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .btn-submit {
+            background-color: var(--gold);
+            color: var(--bg-color);
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-submit:hover {
+            background-color: var(--gold-dark);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>中華房 希彩</h1>
+        <p style="font-size: 12px; color: var(--gold); letter-spacing: 1px;">コースご予約・見積もりシミュレーター</p>
+    </header>
+
+    <div class="chef-message">
+        「アレルギーや苦手な食材、コース内容のご相談など、LINEにて柔軟に対応いたします。ご不明な点がございましたら、まずはお気軽にご相談ください。」<br>
+        <span style="display:block; text-align:right; margin-top:5px;">— 中華房 希彩 シェフ</span>
+    </div>
+
+    <!-- Section 1: お客様情報 -->
+    <h2 class="section-title">1. お客様情報</h2>
+    <div class="form-group">
+        <label>お名前（フリガナ）<span class="required">必須</span></label>
+        <input type="text" id="userName" placeholder="例：山田太郎（ヤマダタロウ）">
+    </div>
+    <div class="form-group">
+        <label>携帯電話番号<span class="required">必須</span></label>
+        <input type="tel" id="userPhone" placeholder="例：090-1234-5678">
+    </div>
+    <div class="form-group">
+        <label>当店のご利用</label>
+        <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="visitCount" value="初めて" checked> 初めて</label>
+            <label class="radio-label"><input type="radio" name="visitCount" value="2回目以降"> 2回目以降</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>ご希望日時<span class="required">必須</span></label>
+        <div style="display: flex; gap: 10px;">
+            <input type="date" id="reserveDate" style="flex: 2;">
+            <select id="reserveTime" style="flex: 1;">
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+            </select>
+        </div>
+        <p class="note">※夜のコースは【前日13:00まで】の要予約となります。</p>
+    </div>
+
+    <div class="form-group">
+        <label>ご人数</label>
+        <div class="counter-wrap">
+            <span style="width: 60px;">大人</span>
+            <button class="counter-btn" onclick="updateCount('adult', -1)">-</button>
+            <span class="counter-val" id="adultCount">2</span>名
+            <button class="counter-btn" onclick="updateCount('adult', 1)">+</button>
+        </div>
+        <div class="counter-wrap">
+            <span style="width: 60px;">お子様</span>
+            <button class="counter-btn" onclick="updateCount('kids', -1)">-</button>
+            <span class="counter-val" id="kidsCount">0</span>名
+            <button class="counter-btn" onclick="updateCount('kids', 1)">+</button>
+        </div>
+        <!-- お子様がいる場合のみ表示 -->
+        <div id="kidsDetailsWrap" style="display: none; margin-top: 10px;">
+            <input type="text" id="kidsDetails" placeholder="お子様の年齢・お食事のご希望を入力（例: 7歳、大人と同じ）">
+        </div>
+    </div>
+
+    <!-- Section 2: コース選択 -->
+    <h2 class="section-title">2. ご希望コース</h2>
+    <label class="card-selector">
+        <input type="radio" name="course" value="omakase" data-name="希彩 完全おまかせコース" data-price="6600" checked>
+        <div class="card-content">
+            <div class="course-title">【希彩 完全おまかせコース】</div>
+            <div class="course-price">¥6,600 <span style="font-size:12px; font-weight:normal;">(税込 / 1名)</span></div>
+            <div class="course-desc">前菜、点心、主菜、お食事、特製デザート盛り合わせ。その日の仕入れとインスピレーションで組み立てる希彩らしい贅沢なスタイル。</div>
+        </div>
+    </label>
+    <label class="card-selector">
+        <input type="radio" name="course" value="takumi" data-name="匠 手打麺＆自家製点心コース" data-price="8800">
+        <div class="card-content">
+            <div class="course-title">【匠 手打麺＆自家製点心コース】</div>
+            <div class="course-price">¥8,800 <span style="font-size:12px; font-weight:normal;">(税込 / 1名)</span></div>
+            <div class="course-desc">打ち立ての熟成手打麺や皮から作る出来立て点心をメインに据えた職人の特別コース。</div>
+        </div>
+    </label>
+    <label class="card-selector">
+        <input type="radio" name="course" value="premium" data-name="希彩 信州極上コース" data-price="8800">
+        <div class="card-content">
+            <div class="course-title">【希彩 信州極上コース】</div>
+            <div class="course-price">¥8,800〜 <span style="font-size:12px; font-weight:normal;">(税込 / 1名)</span></div>
+            <div class="course-desc">信州の自然の恵み、食文化を感じられる厳選食材で仕立てる最高峰コース。特別な夜に。</div>
+        </div>
+    </label>
+
+    <!-- Section 3: ドリンクプラン -->
+    <h2 class="section-title">3. お飲み物プラン</h2>
+    <label class="card-selector">
+        <input type="radio" name="drink" value="none" data-name="お料理のみ（当日ご注文）" data-price="0" checked>
+        <div class="card-content"><div class="course-title" style="margin:0;">お料理のみ（+¥0）</div></div>
+    </label>
+    <label class="card-selector">
+        <input type="radio" name="drink" value="nomihodai" data-name="通常飲み放題プラン" data-price="3500">
+        <div class="card-content">
+            <div class="course-title">通常飲み放題プラン（+¥3,500/1名）</div>
+            <div class="course-desc">ビール・日本酒・紹興酒・ソフトドリンク等</div>
+        </div>
+    </label>
+    <label class="card-selector">
+        <input type="radio" name="drink" value="pairing" data-name="ペアリングプラン" data-price="0">
+        <div class="card-content">
+            <div class="course-title">厳選ペアリングプラン（グループ内でお選びいただけます）</div>
+            <div class="course-desc">塩尻ワインや地酒、または管理栄養士監修の中国茶・ノンアルコールペアリング</div>
+        </div>
+    </label>
+
+    <!-- ペアリング内訳UI -->
+    <div class="pairing-box" id="pairingBox">
+        <p style="font-size: 13px; color: var(--gold); margin-bottom: 10px;">※ペアリングの合計人数が「大人人数」と一致するように調整してください。</p>
+        <div class="pairing-row">
+            <div>
+                <span style="font-size:14px;">アルコールペアリング</span><br>
+                <span style="font-size:12px; color:var(--text-muted);">塩尻ワイン＆信州地酒 (+¥4,500)</span>
+            </div>
+            <div class="counter-wrap" style="margin:0;">
+                <button class="counter-btn" onclick="updatePairing('alc', -1)">-</button>
+                <span class="counter-val" id="alcCount">2</span>名
+                <button class="counter-btn" onclick="updatePairing('alc', 1)">+</button>
+            </div>
+        </div>
+        <div class="pairing-row">
+            <div>
+                <span style="font-size:14px;">ノンアルコールペアリング</span><br>
+                <span style="font-size:12px; color:var(--text-muted);">中国茶・ノンアルコール (+¥2,500)</span>
+            </div>
+            <div class="counter-wrap" style="margin:0;">
+                <button class="counter-btn" onclick="updatePairing('non', -1)">-</button>
+                <span class="counter-val" id="nonCount">0</span>名
+                <button class="counter-btn" onclick="updatePairing('non', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: 詳細オプション -->
+    <h2 class="section-title">4. 詳細・ご要望</h2>
+    <div class="form-group">
+        <label>アレルギー・苦手食材</label>
+        <input type="text" id="allergies" placeholder="例：エビNG、辛味控えめ（ない場合は空欄）">
+    </div>
+    <div class="form-group">
+        <label>ご利用用途</label>
+        <input type="text" id="purpose" placeholder="例：誕生日、接待、普段の食事">
+    </div>
+    <div class="form-group">
+        <label>お祝いプレートのご希望</label>
+        <input type="text" id="plate" placeholder="例：Happy Birthday 〇〇（ない場合は空欄）">
+    </div>
+    <div class="form-group">
+        <label>ご要望・ご相談</label>
+        <textarea id="notes" placeholder="お子様用備品のご希望や、その他ご相談など"></textarea>
+    </div>
+
+    <!-- Section 5: プレビュー -->
+    <h2 class="section-title">LINE予約用テンプレート（自動作成）</h2>
+    <p class="note">以下の文章が生成されます。「予約内容をコピーしてLINEを開く」を押して送信してください。</p>
+    <div class="template-preview" id="templateOutput"></div>
+
+</div>
+
+<!-- Sticky Footer -->
+<div class="sticky-footer">
+    <div class="total-price-box">
+        <div class="label" id="summaryLabel">大人2名様 概算合計</div>
+        <div class="price" id="totalPriceDisplay">¥0</div>
+    </div>
+    <button class="btn-submit" id="copyBtn">
+        📋 予約内容をコピーしてLINEを開く
+    </button>
+</div>
+
+<script>
+    // State
+    let state = {
+        adults: 2,
+        kids: 0,
+        alcCount: 2,
+        nonCount: 0
+    };
+
+    // Initialize Date Constraint (Tomorrow)
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    document.getElementById('reserveDate').min = tomorrow.toISOString().split('T')[0];
+
+    // Event Listeners
+    document.querySelectorAll('input, select, textarea').forEach(el => {
+        el.addEventListener('input', generateTemplate);
+        el.addEventListener('change', generateTemplate);
+    });
+
+    document.querySelectorAll('input[name="drink"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const pairingBox = document.getElementById('pairingBox');
+            if(radio.value === 'pairing') {
+                pairingBox.classList.add('active');
+                state.alcCount = state.adults; // Default reset
+                state.nonCount = 0;
+                document.getElementById('alcCount').innerText = state.alcCount;
+                document.getElementById('nonCount').innerText = state.nonCount;
+            } else {
+                pairingBox.classList.remove('active');
+            }
+            generateTemplate();
+        });
+    });
+
+    // Counters
+    function updateCount(type, delta) {
+        if(type === 'adult') {
+            if(state.adults + delta >= 1) state.adults += delta;
+            // Auto adjust pairing
+            if(document.querySelector('input[name="drink"]:checked').value === 'pairing') {
+                state.alcCount = state.adults;
+                state.nonCount = 0;
+                document.getElementById('alcCount').innerText = state.alcCount;
+                document.getElementById('nonCount').innerText = state.nonCount;
+            }
+        }
+        if(type === 'kids') {
+            if(state.kids + delta >= 0) state.kids += delta;
+            document.getElementById('kidsDetailsWrap').style.display = state.kids > 0 ? 'block' : 'none';
+        }
+        document.getElementById('adultCount').innerText = state.adults;
+        document.getElementById('kidsCount').innerText = state.kids;
+        generateTemplate();
+    }
+
+    function updatePairing(type, delta) {
+        if(type === 'alc') {
+            if(state.alcCount + delta >= 0 && state.alcCount + delta <= state.adults) {
+                state.alcCount += delta;
+                state.nonCount = state.adults - state.alcCount;
+            }
+        }
+        if(type === 'non') {
+            if(state.nonCount + delta >= 0 && state.nonCount + delta <= state.adults) {
+                state.nonCount += delta;
+                state.alcCount = state.adults - state.nonCount;
+            }
+        }
+        document.getElementById('alcCount').innerText = state.alcCount;
+        document.getElementById('nonCount').innerText = state.nonCount;
+        generateTemplate();
+    }
+
+    // Format Currency
+    function formatMoney(num) {
+        return num.toLocaleString();
+    }
+
+    // Generate Text
+    function generateTemplate() {
+        const name = document.getElementById('userName').value || '未記入';
+        const phone = document.getElementById('userPhone').value || '未記入';
+        const visit = document.querySelector('input[name="visitCount"]:checked').value;
+        const dateRaw = document.getElementById('reserveDate').value;
+        const time = document.getElementById('reserveTime').value;
+        let dateStr = '未記入';
+        if(dateRaw) {
+            const d = new Date(dateRaw);
+            const days = ['日','月','火','水','木','金','土'];
+            dateStr = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日(${days[d.getDay()]}) ${time}〜`;
+        }
+
+        const kidsDetails = document.getElementById('kidsDetails').value || 'なし';
+        
+        const courseRadio = document.querySelector('input[name="course"]:checked');
+        const courseName = courseRadio.getAttribute('data-name');
+        const coursePrice = parseInt(courseRadio.getAttribute('data-price'));
+        
+        const drinkRadio = document.querySelector('input[name="drink"]:checked');
+        const drinkType = drinkRadio.value;
+        const drinkName = drinkRadio.getAttribute('data-name');
+        
+        let drinkText = '';
+        let drinkTotal = 0;
+
+        if (drinkType === 'pairing') {
+            drinkText = `\n      ・アルコールペアリング（+¥4,500） × ${state.alcCount}名\n      ・ノンアルコールペアリング（+¥2,500） × ${state.nonCount}名`;
+            drinkTotal = (state.alcCount * 4500) + (state.nonCount * 2500);
+        } else {
+            const drinkP = parseInt(drinkRadio.getAttribute('data-price'));
+            drinkText = drinkName;
+            if(drinkP > 0) drinkText += `（+¥${formatMoney(drinkP)}/1名）`;
+            drinkTotal = drinkP * state.adults;
+        }
+
+        const allergies = document.getElementById('allergies').value || 'なし';
+        const purpose = document.getElementById('purpose').value || 'なし';
+        const plate = document.getElementById('plate').value || 'なし';
+        const notes = document.getElementById('notes').value || 'なし';
+
+        const courseTotal = coursePrice * state.adults;
+        const grandTotal = courseTotal + drinkTotal;
+        const priceSuffix = courseName.includes('極上') ? '〜' : '';
+
+        const template = `【中華房 希彩 ご予約希望】
+
+1. お名前（フリガナ）： ${name}
+2. 携帯電話番号： ${phone}
+3. 当店のご利用： ${visit}
+4. ご希望日時： ${dateStr}
+5. 人数： 大人 ${state.adults}名 / お子様 ${state.kids}名${state.kids > 0 ? `（年齢・お食事： ${kidsDetails}）` : ''}
+6. ご希望コース：
+　・【${courseName}】¥${formatMoney(coursePrice)}（税込）
+　・お飲み物： ${drinkText}
+7. アレルギー・苦手食材： ${allergies}
+8. ご利用用途： ${purpose}
+9. お祝いプレートのご希望： ${plate}
+10. ご要望・ご相談： ${notes}
+
+─────────────────────
+【概算お見積もり】
+コース：¥${formatMoney(coursePrice)} × ${state.adults}名
+ドリンク：¥${formatMoney(drinkTotal)}
+合計（税込）：¥${formatMoney(grandTotal)}${priceSuffix}
+※最終金額はご来店時にご確認ください。
+─────────────────────`;
+
+        document.getElementById('templateOutput').innerText = template;
+        
+        // Update Sticky Footer
+        document.getElementById('summaryLabel').innerText = `大人${state.adults}名様 概算合計`;
+        document.getElementById('totalPriceDisplay').innerText = `¥${formatMoney(grandTotal)}${priceSuffix}`;
+    }
+
+    // Copy and Redirect
+    document.getElementById('copyBtn').addEventListener('click', () => {
+        const name = document.getElementById('userName').value;
+        const phone = document.getElementById('userPhone').value;
+        const dateRaw = document.getElementById('reserveDate').value;
+
+        if(!name || !phone || !dateRaw) {
+            alert('⚠️ お名前、携帯電話番号、ご希望日時をご入力ください。');
+            return;
+        }
+
+        const text = document.getElementById('templateOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('✅ 予約テンプレートをコピーしました！\n公式LINEが開きますので、トーク画面に貼り付けて送信してください。');
+            window.location.href = 'https://lin.ee/RHzCAPf';
+        }).catch(err => {
+            alert('コピーに失敗しました。手動でテキストを選択してコピーしてください。');
+        });
+    });
+
+    // Initial render
+    generateTemplate();
+</script>
+</body>
+</html>

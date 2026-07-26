@@ -55,12 +55,13 @@
     .bar-buttons a, .bar-buttons button { 
       flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
       height: 54px; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; 
-      text-decoration: none; color: #fff; border-radius: 4px; transition: all 0.3s ease; 
+      text-decoration: none; border-radius: 4px; transition: all 0.3s ease; 
     }
-    .btn-line-style { background-color: #06C755; }
-    .btn-line-style:hover { background-color: #05b34c; }
-    .btn-tel-style { background-color: #b79456; }
-    .btn-tel-style:hover { background-color: #a38249; }
+    /* ブラッシュアップ: お店のトーンに合わせたボタンデザイン */
+    .btn-reserve-style { background-color: #b79456; color: #141312; font-weight: 600; }
+    .btn-reserve-style:hover { background-color: #d1b37b; }
+    .btn-tel-style { background-color: #26211E; border: 1px solid #b79456; color: #b79456; }
+    .btn-tel-style:hover { background-color: #38312d; }
     .tel-subtext { font-size: 10px; opacity: 0.9; margin-top: 2px;}
 
     @media (min-width: 768px) {
@@ -87,8 +88,7 @@
           <a href="#anniversary" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ANNIVERSARY</a>
           <a href="#menu" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">MENU</a>
           <a href="collaboration.html" class="text-sm tracking-widest text-brass hover:text-white transition-colors font-eng bg-brass/10 px-3 py-1 rounded-sm border border-brass/30">MARIAGE</a>
-            <a href="reserve.html" class="text-sm tracking-widest text-off-white hover:text-brass transition-colors font-eng bg-brass/20 px-3 py-1 rounded-sm border border-brass/40">RESERVE</a>
-
+          <a href="reserve.html" class="text-sm tracking-widest text-off-white hover:text-brass transition-colors font-eng bg-brass/20 px-3 py-1 rounded-sm border border-brass/40">RESERVE</a>
           <a href="#access" class="text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng">ACCESS</a>
         </nav>
         
@@ -115,7 +115,7 @@
         <a href="#anniversary" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">ANNIVERSARY</a>
         <a href="#menu" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">MENU</a>
         <a href="collaboration.html" class="py-3 text-sm tracking-widest text-brass font-bold font-eng mobile-link bg-brass/5">MARIAGE (コラボ宴) ➔</a>
-          <a href="reserve.html" class="py-3 text-sm tracking-widest text-off-white font-bold font-eng mobile-link bg-brass/10">RESERVE (ご予約ページ) ➔</a>
+        <a href="reserve.html" class="py-3 text-sm tracking-widest text-off-white font-bold font-eng mobile-link bg-brass/10">RESERVE (ご予約ページ) ➔</a>
         <a href="#access" class="py-3 text-sm tracking-widest text-mute-gray hover:text-brass transition-colors font-eng mobile-link">ACCESS</a>
 
         <div class="flex justify-center gap-6 py-4 mt-2 border-t border-brass/10 pt-4">
@@ -458,7 +458,7 @@
           </div>
         </div>
 
-        <!-- 右側：営業時間・定休日（新しくこちらに統合しました） -->
+        <!-- 右側：営業時間・定休日 -->
         <div class="w-full md:w-1/2 space-y-6 md:border-l md:border-stone-200 md:pl-12">
           <span class="font-eng text-xs tracking-[0.3em] text-brass uppercase block">Opening Hours</span>
           <h2 class="text-2xl tracking-widest font-medium">営業時間・定休日</h2>
@@ -489,7 +489,7 @@
         
         <p class="text-base text-mute-gray leading-loose mb-12 max-w-xl mx-auto font-light">
           LINEでのご予約が最もスムーズです。<br>
-          下のボタンから「予約テンプレート」をコピーし、LINEに貼り付けて必要事項をご記入の上、送信してください。
+          下のボタンから「予約テンプレート」をコピーし、ご予約ページから必要事項をご記入の上、送信してください。
         </p>
         <p class="text-center text-sm text-brass font-bold mb-12">
           ※夜のコースをご希望の場合は、前日13:00までに要予約となります。
@@ -533,11 +533,11 @@
           </div>
         </div>
 
-        <!-- LINEアクション＆QRコード表示エリア -->
-        <div class="max-w-lg mx-auto text-center border border-emerald-500/20 bg-emerald-950/10 p-8 rounded-sm">
-          <p class="text-sm text-mute-gray mb-6 font-light">スマホの方は、下記の緑のボタンをタップすると公式LINEが開きます。</p>
-          <a href="https://lin.ee/uI5Fj7J" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#06C755] text-white font-bold tracking-wider px-10 py-4 rounded-sm hover:bg-[#05b34c] transition-colors w-full sm:w-auto shadow-lg mb-8">
-            公式LINEで予約する
+        <!-- LINEアクション＆QRコード表示エリア (ブラッシュアップ済) -->
+        <div class="max-w-lg mx-auto text-center border border-brass/20 bg-dark-sepia/30 p-8 rounded-sm">
+          <p class="text-sm text-mute-gray mb-6 font-light">スマホの方は、下記のボタンをタップしてご予約ページへお進みください。</p>
+          <a href="reserve.html" class="inline-block bg-brass text-rich-black font-bold tracking-wider px-10 py-4 rounded-sm hover:bg-[#c9a86a] transition-colors w-full sm:w-auto shadow-lg mb-8">
+            ご予約ページへ進む
           </a>
           
           <div class="pt-6 border-t border-brass/10">
@@ -584,8 +584,8 @@
   <div id="floating-reservation-bar">
     <div class="text-[11px] md:text-xs text-brass mb-3 tracking-widest font-eng font-medium">RESERVATION</div>
     <div class="bar-buttons">
-      <a href="https://lin.ee/uI5Fj7J" target="_blank" rel="noopener noreferrer" class="btn-line-style shadow-lg">
-        LINEで予約する
+      <a href="reserve.html" class="btn-reserve-style shadow-lg">
+        ご予約ページへ進む
       </a>
       <a href="tel:09034409615" class="btn-tel-style shadow-lg">
         <span>電話で予約する</span>

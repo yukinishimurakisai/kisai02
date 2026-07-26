@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ご予約・見積もりシミュレーター | 中華房 希彩</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #121212;
-            --surface-color: #1a1a1a;
-            --gold: #D4AF37;
-            --gold-dark: #b8972e;
-            --text-main: #f5f5f5;
-            --text-muted: #999999;
-            --border-color: #333333;
-            --accent-red: #b35959;
+            /* 温かみのあるライトトーン */
+            --bg-color: #FDFCF9;       /* 背景：優しいアイボリー */
+            --surface-color: #FFFFFF;  /* 要素の背景：白 */
+            --gold: #C2A366;           /* 上品なシャンパンゴールド */
+            --gold-dark: #9E824A;      /* 落ち着いたゴールド */
+            --text-main: #4A453E;      /* 文字色：墨色（真っ黒より柔らかい） */
+            --text-muted: #8C867C;     /* 補足文字：優しいグレー */
+            --border-color: #E6E2D8;   /* 枠線：薄いベージュグレー */
+            --accent-red: #A35050;     /* 落ち着いたえんじ色 */
+            --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.03); /* ふんわりとした影 */
         }
 
         * {
@@ -27,7 +29,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Noto Serif JP', serif;
-            line-height: 1.6;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -41,62 +43,75 @@
         /* Header & Message */
         header {
             text-align: center;
-            padding: 40px 0 20px;
+            padding: 40px 0 25px;
         }
         header h1 {
-            font-size: 24px;
-            color: var(--gold);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            font-size: 26px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            letter-spacing: 3px;
         }
         .chef-message {
             background-color: var(--surface-color);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            padding: 20px;
-            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            padding: 25px;
+            border-radius: 8px;
             font-size: 14px;
             color: var(--text-main);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             position: relative;
+            text-align: center;
         }
         .chef-message::before {
             content: "”";
             position: absolute;
-            top: -10px;
-            left: 10px;
-            font-size: 40px;
+            top: -15px;
+            left: 20px;
+            font-size: 50px;
             color: var(--gold);
-            opacity: 0.2;
+            opacity: 0.3;
+            font-family: serif;
         }
 
         /* Form Sections */
         .section-title {
-            font-size: 18px;
-            color: var(--gold);
-            margin: 40px 0 20px;
+            font-size: 19px;
+            color: var(--text-main);
+            margin: 40px 0 25px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             display: flex;
             align-items: center;
             letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .section-title::before {
+            content: "■";
+            color: var(--gold);
+            font-size: 14px;
+            margin-right: 10px;
         }
 
         .form-group {
             margin-bottom: 25px;
         }
         .form-group label {
-            display: block;
+            display: flex;
+            align-items: center;
             margin-bottom: 8px;
             font-size: 15px;
+            font-weight: 600;
         }
         .form-group label .required {
-            color: var(--accent-red);
+            background-color: var(--accent-red);
+            color: #fff;
             font-size: 11px;
-            margin-left: 6px;
-            vertical-align: middle;
-            border: 1px solid rgba(179, 89, 89, 0.4);
-            padding: 1px 5px;
-            border-radius: 3px;
+            margin-left: 10px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: normal;
         }
         
         input[type="text"],
@@ -105,44 +120,49 @@
         select,
         textarea {
             width: 100%;
-            background-color: var(--bg-color);
+            background-color: #FAFAF8;
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 12px;
+            padding: 14px;
             font-family: 'Noto Sans JP', sans-serif;
             font-size: 16px;
-            border-radius: 4px;
-            transition: border-color 0.3s;
+            border-radius: 6px;
+            transition: all 0.3s;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--gold);
+            background-color: var(--surface-color);
+            box-shadow: 0 0 0 3px rgba(194, 163, 102, 0.15);
         }
         textarea {
             resize: vertical;
-            min-height: 80px;
+            min-height: 100px;
         }
 
         .note {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-muted);
-            margin-top: 5px;
+            margin-top: 6px;
+            font-family: 'Noto Sans JP', sans-serif;
         }
 
         /* Radio & Card Selectors */
         .radio-group {
             display: flex;
-            gap: 20px;
+            gap: 25px;
+            padding: 5px 0;
         }
         .radio-label {
             display: flex;
             align-items: center;
             cursor: pointer;
             font-size: 15px;
+            font-family: 'Noto Sans JP', sans-serif;
         }
         .radio-label input {
             margin-right: 8px;
-            accent-color: var(--gold);
+            accent-color: var(--gold-dark);
             width: 18px;
             height: 18px;
         }
@@ -160,29 +180,37 @@
         }
         .card-content {
             border: 1px solid var(--border-color);
-            padding: 18px;
-            border-radius: 6px;
+            padding: 20px;
+            border-radius: 8px;
             background-color: var(--surface-color);
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
         }
         .card-selector input:checked ~ .card-content {
             border-color: var(--gold);
-            background-color: rgba(212, 175, 55, 0.04);
+            background-color: rgba(194, 163, 102, 0.05);
+            box-shadow: 0 4px 15px rgba(194, 163, 102, 0.15);
         }
         .course-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--gold);
-            margin-bottom: 5px;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+        .card-selector input:checked ~ .card-content .course-title {
+            color: var(--gold-dark);
         }
         .course-price {
             font-family: 'Noto Sans JP', sans-serif;
             font-weight: bold;
-            margin-bottom: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--accent-red);
         }
         .course-desc {
             font-size: 13px;
             color: var(--text-muted);
+            line-height: 1.6;
         }
 
         /* Counter */
@@ -193,34 +221,38 @@
             margin-bottom: 15px;
         }
         .counter-btn {
-            background-color: var(--border-color);
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
             color: var(--text-main);
-            border: none;
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             font-size: 20px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .counter-btn:hover {
-            background-color: var(--gold-dark);
-            color: var(--bg-color);
+            border-color: var(--gold);
+            color: var(--gold-dark);
         }
         .counter-val {
             font-size: 18px;
             min-width: 30px;
             text-align: center;
             font-family: 'Noto Sans JP', sans-serif;
+            font-weight: bold;
         }
 
         /* Pairing breakdown */
         .pairing-box {
-            background-color: #17140f;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 15px;
+            background-color: #FAFAF8;
+            border: 1px dashed var(--gold);
+            padding: 20px;
             margin-top: 15px;
-            border-radius: 4px;
+            border-radius: 8px;
             display: none;
         }
         .pairing-box.active {
@@ -230,21 +262,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .pairing-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
         /* Output Template */
         .template-preview {
-            background-color: var(--surface-color);
+            background-color: #F4F3F0;
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 25px;
             font-family: 'Noto Sans JP', sans-serif;
-            font-size: 13px;
+            font-size: 14px;
             white-space: pre-wrap;
-            color: #cccccc;
+            color: var(--text-main);
             margin-top: 15px;
-            border-radius: 4px;
+            border-radius: 8px;
             user-select: all;
+            line-height: 1.8;
         }
 
         /* Sticky Footer */
@@ -253,47 +293,49 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(26, 26, 26, 0.95);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
-            border-top: 1px solid var(--gold);
-            padding: 12px 20px;
+            border-top: 1px solid var(--border-color);
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
         }
         .total-price-box {
             font-family: 'Noto Sans JP', sans-serif;
         }
         .total-price-box .label {
-            font-size: 11px;
-            color: var(--gold);
+            font-size: 12px;
+            color: var(--text-muted);
             letter-spacing: 1px;
+            margin-bottom: 2px;
         }
         .total-price-box .price {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            color: var(--text-main);
+            color: var(--accent-red);
         }
         
         .btn-submit {
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: #121212;
+            color: #FFFFFF;
             border: none;
-            padding: 12px 20px;
-            font-size: 14px;
+            padding: 14px 24px;
+            font-size: 15px;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: transform 0.2s, opacity 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(194, 163, 102, 0.3);
         }
         .btn-submit:hover {
-            opacity: 0.9;
+            opacity: 0.95;
+            transform: translateY(-2px);
         }
 
         /* Custom Modal Popup */
@@ -303,8 +345,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(4px);
+            background-color: rgba(74, 69, 62, 0.6);
+            backdrop-filter: blur(3px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -319,13 +361,12 @@
         }
         .modal-content {
             background-color: var(--surface-color);
-            border: 1px solid var(--gold);
             width: 90%;
-            max-width: 400px;
-            padding: 30px 25px;
-            border-radius: 8px;
+            max-width: 420px;
+            padding: 35px 30px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             transform: translateY(20px);
             transition: transform 0.3s ease;
         }
@@ -333,31 +374,33 @@
             transform: translateY(0);
         }
         .modal-title {
-            font-size: 18px;
-            color: var(--gold);
-            margin-bottom: 15px;
+            font-size: 19px;
+            color: var(--text-main);
+            font-weight: bold;
+            margin-bottom: 20px;
             letter-spacing: 1px;
         }
         .modal-text {
             font-size: 14px;
             color: var(--text-main);
             line-height: 1.8;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-align: left;
-            background-color: rgba(0,0,0,0.3);
-            padding: 15px;
-            border-radius: 4px;
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 6px;
             border: 1px solid var(--border-color);
+            font-family: 'Noto Sans JP', sans-serif;
         }
         .modal-btn {
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: #121212;
+            color: #FFFFFF;
             border: none;
             width: 100%;
-            padding: 12px;
-            font-size: 15px;
+            padding: 14px;
+            font-size: 16px;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             transition: opacity 0.3s;
         }
@@ -371,19 +414,19 @@
 <div class="container">
     <header>
         <h1>中華房 希彩</h1>
-        <p style="font-size: 12px; color: var(--gold); letter-spacing: 1px;">コースご予約・見積もりシミュレーター</p>
+        <p style="font-size: 13px; color: var(--gold-dark); letter-spacing: 1px;">コースご予約・見積もりシミュレーター</p>
     </header>
 
     <div class="chef-message">
-        「アレルギーや苦手な食材、コース内容のご相談など、LINEにて柔軟に対応いたします。ご不明な点がございましたら、まずはお気軽にご相談ください。」<br>
-        <span style="display:block; text-align:right; margin-top:8px; color:var(--gold); font-size:13px;">— 中華房 希彩 シェフ</span>
+        「アレルギーや苦手な食材、コース内容のご相談など、LINEにて柔軟に対応いたします。<br>ご不明な点がございましたら、まずはお気軽にご相談ください。」<br>
+        <span style="display:block; text-align:right; margin-top:12px; color:var(--text-muted); font-size:13px;">— 中華房 希彩 シェフ</span>
     </div>
 
     <!-- Section 1: お客様情報 -->
     <h2 class="section-title">1. お客様情報</h2>
     <div class="form-group">
         <label>お名前（フリガナ）<span class="required">必須</span></label>
-        <input type="text" id="userName" placeholder="例：山田太郎（ヤマダタロウ）">
+        <input type="text" id="userName" placeholder="例：山田 太郎（ヤマダ タロウ）">
     </div>
     <div class="form-group">
         <label>携帯電話番号<span class="required">必須</span></label>
@@ -412,18 +455,18 @@
     <div class="form-group">
         <label>ご人数</label>
         <div class="counter-wrap">
-            <span style="width: 60px; color: var(--text-muted);">大人</span>
+            <span style="width: 60px; color: var(--text-main); font-weight: 600;">大人</span>
             <button class="counter-btn" onclick="updateCount('adult', -1)">-</button>
             <span class="counter-val" id="adultCount">2</span>名
             <button class="counter-btn" onclick="updateCount('adult', 1)">+</button>
         </div>
         <div class="counter-wrap">
-            <span style="width: 60px; color: var(--text-muted);">お子様</span>
+            <span style="width: 60px; color: var(--text-main); font-weight: 600;">お子様</span>
             <button class="counter-btn" onclick="updateCount('kids', -1)">-</button>
             <span class="counter-val" id="kidsCount">0</span>名
             <button class="counter-btn" onclick="updateCount('kids', 1)">+</button>
         </div>
-        <div id="kidsDetailsWrap" style="display: none; margin-top: 10px;">
+        <div id="kidsDetailsWrap" style="display: none; margin-top: 15px;">
             <input type="text" id="kidsDetails" placeholder="お子様の年齢・お食事のご希望を入力（例: 7歳、大人と同じ）">
         </div>
     </div>
@@ -433,7 +476,7 @@
     <label class="card-selector">
         <input type="radio" name="course" value="omakase" data-name="希彩 完全おまかせコース" data-price="6600" checked>
         <div class="card-content">
-            <div class="course-title">【希彩 完全おまかせコース】</div>
+            <div class="course-title">希彩 完全おまかせコース</div>
             <div class="course-price">¥6,600 <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">(税込 / 1名)</span></div>
             <div class="course-desc">前菜、点心、主菜、お食事、特製デザート盛り合わせ。その日の仕入れとインスピレーションで組み立てる希彩らしい贅沢なスタイル。</div>
         </div>
@@ -441,7 +484,7 @@
     <label class="card-selector">
         <input type="radio" name="course" value="takumi" data-name="匠 手打麺＆自家製点心コース" data-price="8800">
         <div class="card-content">
-            <div class="course-title">【匠 手打麺＆自家製点心コース】</div>
+            <div class="course-title">匠 手打麺＆自家製点心コース</div>
             <div class="course-price">¥8,800 <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">(税込 / 1名)</span></div>
             <div class="course-desc">打ち立ての熟成手打麺や皮から作る出来立て点心をメインに据えた職人の特別コース。</div>
         </div>
@@ -449,7 +492,7 @@
     <label class="card-selector">
         <input type="radio" name="course" value="premium" data-name="希彩 信州極上コース" data-price="8800">
         <div class="card-content">
-            <div class="course-title">【希彩 信州極上コース】</div>
+            <div class="course-title">希彩 信州極上コース</div>
             <div class="course-price">¥8,800〜 <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">(税込 / 1名)</span></div>
             <div class="course-desc">信州の自然の恵み、食文化を感じられる厳選食材で仕立てる最高峰コース。特別な夜に。</div>
         </div>
@@ -459,29 +502,29 @@
     <h2 class="section-title">3. お飲み物プラン</h2>
     <label class="card-selector">
         <input type="radio" name="drink" value="none" data-name="お料理のみ（当日ご注文）" data-price="0" checked>
-        <div class="card-content"><div class="course-title" style="margin:0;">お料理のみ（+¥0）</div></div>
+        <div class="card-content"><div class="course-title" style="margin:0;">お料理のみ（当日個別にご注文）</div></div>
     </label>
     <label class="card-selector">
         <input type="radio" name="drink" value="nomihodai" data-name="通常飲み放題プラン" data-price="3500">
         <div class="card-content">
             <div class="course-title">通常飲み放題プラン（+¥3,500 / 1名）</div>
-            <div class="course-desc">ビール・日本酒・紹興酒・ソフトドリンク等</div>
+            <div class="course-desc">ビール・日本酒・紹興酒・ソフトドリンク等が対象となります。</div>
         </div>
     </label>
     <label class="card-selector">
         <input type="radio" name="drink" value="pairing" data-name="ペアリングプラン" data-price="0">
         <div class="card-content">
-            <div class="course-title">厳選ペアリングプラン（グループ内でお選びいただけます）</div>
-            <div class="course-desc">塩尻ワインや地酒、または管理栄養士監修の中国茶・ノンアルコールペアリング</div>
+            <div class="course-title">厳選ペアリングプラン（グループ内で個別選択可）</div>
+            <div class="course-desc">お料理に合わせた塩尻ワインや地酒、または管理栄養士監修の中国茶・ノンアルコールペアリングをお楽しみいただけます。</div>
         </div>
     </label>
 
     <div class="pairing-box" id="pairingBox">
-        <p style="font-size: 13px; color: var(--gold); margin-bottom: 12px;">※ペアリングの合計人数が「大人人数」と一致するように調整してください。</p>
+        <p style="font-size: 13px; color: var(--gold-dark); margin-bottom: 15px; font-family: 'Noto Sans JP', sans-serif;">※大人人数に合わせて、それぞれの人数を調整してください。</p>
         <div class="pairing-row">
             <div>
-                <span style="font-size:14px;">アルコールペアリング</span><br>
-                <span style="font-size:12px; color:var(--text-muted);">塩尻ワイン＆信州地酒 (+¥4,500)</span>
+                <span style="font-size:15px; font-weight:bold;">アルコールペアリング</span><br>
+                <span style="font-size:13px; color:var(--text-muted);">塩尻ワイン＆信州地酒 (+¥4,500)</span>
             </div>
             <div class="counter-wrap" style="margin:0;">
                 <button class="counter-btn" onclick="updatePairing('alc', -1)">-</button>
@@ -489,10 +532,10 @@
                 <button class="counter-btn" onclick="updatePairing('alc', 1)">+</button>
             </div>
         </div>
-        <div class="pairing-row" style="margin-top: 10px;">
+        <div class="pairing-row">
             <div>
-                <span style="font-size:14px;">ノンアルコールペアリング</span><br>
-                <span style="font-size:12px; color:var(--text-muted);">中国茶・ノンアルコール (+¥2,500)</span>
+                <span style="font-size:15px; font-weight:bold;">ノンアルコールペアリング</span><br>
+                <span style="font-size:13px; color:var(--text-muted);">中国茶・ノンアルコール (+¥2,500)</span>
             </div>
             <div class="counter-wrap" style="margin:0;">
                 <button class="counter-btn" onclick="updatePairing('non', -1)">-</button>
@@ -510,7 +553,7 @@
     </div>
     <div class="form-group">
         <label>ご利用用途</label>
-        <input type="text" id="purpose" placeholder="例：誕生日、接待、普段の食事">
+        <input type="text" id="purpose" placeholder="例：誕生日、接待、ご家族での食事">
     </div>
     <div class="form-group">
         <label>お祝いプレートのご希望</label>
@@ -518,12 +561,12 @@
     </div>
     <div class="form-group">
         <label>ご要望・ご相談</label>
-        <textarea id="notes" placeholder="お子様用備品のご希望や、その他ご相談など"></textarea>
+        <textarea id="notes" placeholder="お子様用備品のご希望や、その他ご相談などがございましたらご記入ください"></textarea>
     </div>
 
     <!-- Section 5: プレビュー -->
     <h2 class="section-title">LINE予約用テンプレート（自動作成）</h2>
-    <p class="note">以下の文章が生成されます。「予約内容をコピーしてLINEを開く」を押して送信してください。</p>
+    <p class="note">以下の文章が自動で作成されます。「予約内容をコピーしてLINEを開く」を押して送信してください。</p>
     <div class="template-preview" id="templateOutput"></div>
 
 </div>
@@ -535,7 +578,7 @@
         <div class="price" id="totalPriceDisplay">¥0</div>
     </div>
     <button class="btn-submit" id="copyBtn">
-        📋 予約内容をコピーしてLINEを開く
+        📋 予約内容をコピーしてLINEへ
     </button>
 </div>
 
@@ -545,9 +588,9 @@
         <div class="modal-title" id="modalTitle">中華房 希彩</div>
         <div class="modal-text" id="modalText">
             ✅ ご予約内容をコピーしました。<br><br>
-            まもなく公式LINEが開きますので、トーク画面にそのまま「貼り付け（ペースト）」して送信をお願いいたします。
+            まもなく公式LINEが開きますので、トーク画面にそのまま<strong>「貼り付け（ペースト）」</strong>して送信をお願いいたします。
         </div>
-        <button class="modal-btn" id="modalOkBtn">OK</button>
+        <button class="modal-btn" id="modalOkBtn">確認してLINEを開く</button>
     </div>
 </div>
 
@@ -655,7 +698,7 @@
         let drinkTotal = 0;
 
         if (drinkType === 'pairing') {
-            drinkText = `\n      ・アルコールペアリング（+¥4,500） × ${state.alcCount}名\n      ・ノンアルコールペアリング（+¥2,500） × ${state.nonCount}名`;
+            drinkText = `\n      ・アルコール（+¥4,500） × ${state.alcCount}名\n      ・ノンアルコール（+¥2,500） × ${state.nonCount}名`;
             drinkTotal = (state.alcCount * 4500) + (state.nonCount * 2500);
         } else {
             const drinkP = parseInt(drinkRadio.getAttribute('data-price'));
@@ -676,17 +719,17 @@
         const template = `【中華房 希彩 ご予約希望】
 
 1. お名前（フリガナ）： ${name}
-2. 携帯電話番号： ${phone}
+2. 電話番号： ${phone}
 3. 当店のご利用： ${visit}
 4. ご希望日時： ${dateStr}
-5. 人数： 大人 ${state.adults}名 / お子様 ${state.kids}名${state.kids > 0 ? `（年齢・お食事： ${kidsDetails}）` : ''}
+5. 人数： 大人 ${state.adults}名 / お子様 ${state.kids}名${state.kids > 0 ? `（詳細： ${kidsDetails}）` : ''}
 6. ご希望コース：
-　・【${courseName}】¥${formatMoney(coursePrice)}（税込）
+　・【${courseName}】¥${formatMoney(coursePrice)}
 　・お飲み物： ${drinkText}
 7. アレルギー・苦手食材： ${allergies}
 8. ご利用用途： ${purpose}
-9. お祝いプレートのご希望： ${plate}
-10. ご要望・ご相談： ${notes}
+9. お祝いプレート： ${plate}
+10. ご要望： ${notes}
 
 ─────────────────────
 【概算お見積もり】
@@ -711,7 +754,7 @@
         if(!name || !phone || !dateRaw) {
             modalActionType = 'error';
             document.getElementById('modalTitle').innerText = '入力内容のご確認';
-            document.getElementById('modalText').innerHTML = '⚠️ お名前、携帯電話番号、ご希望日時をご入力ください。';
+            document.getElementById('modalText').innerHTML = '⚠️ 「お名前」「携帯電話番号」「ご希望日時」のご入力をお願いいたします。';
             document.getElementById('customModal').classList.add('active');
             return;
         }
@@ -720,7 +763,7 @@
         navigator.clipboard.writeText(text).then(() => {
             modalActionType = 'success';
             document.getElementById('modalTitle').innerText = '中華房 希彩';
-            document.getElementById('modalText').innerHTML = '✅ ご予約内容をコピーしました。<br><br>まもなく公式LINEが開きますので、トーク画面にそのまま**「貼り付け（ペースト）」**して送信をお願いいたします。';
+            document.getElementById('modalText').innerHTML = '✅ ご予約内容をコピーしました。<br><br>まもなく公式LINEが開きますので、トーク画面にそのまま<strong>「貼り付け（ペースト）」</strong>して送信をお願いいたします。';
             document.getElementById('customModal').classList.add('active');
         }).catch(err => {
             alert('コピーに失敗しました。手動でテキストを選択してコピーしてください。');

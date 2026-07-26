@@ -478,76 +478,39 @@
       </div>
     </section>
 
-    <!-- RESERVATION セクション -->
+      <!-- RESERVATION セクション -->
     <section class="w-full py-24 md:py-32 px-6 bg-rich-black text-off-white border-t border-brass/20">
       <div class="max-w-3xl mx-auto text-center">
         <div class="mb-12">
           <span class="font-eng text-xs tracking-[0.3em] text-brass uppercase block mb-3">Reservation</span>
-          <h2 class="text-2xl md:text-3xl tracking-widest font-medium">スムーズなご予約</h2>
+          <h2 class="text-2xl md:text-3xl tracking-widest font-medium">ご予約</h2>
           <div class="w-12 h-[1px] bg-brass/50 mx-auto mt-6"></div>
         </div>
         
-        <p class="text-base text-mute-gray leading-loose mb-12 max-w-xl mx-auto font-light">
-          LINEでのご予約が最もスムーズです。<br>
-          下のボタンから「予約テンプレート」をコピーし、ご予約ページから必要事項をご記入の上、送信してください。
+        <p class="text-base text-mute-gray leading-loose mb-10 max-w-xl mx-auto font-light">
+          当店へのご予約は、専用の「ご予約ページ」にて承っております。<br>
+          公式LINEからのお手続きが最もスムーズです。
         </p>
         <p class="text-center text-sm text-brass font-bold mb-12">
           ※夜のコースをご希望の場合は、前日13:00までに要予約となります。
         </p>
 
-        <!-- テンプレートコピー枠 -->
-        <div class="bg-dark-sepia border border-brass/30 rounded-sm p-6 md:p-8 mb-12 text-left max-w-lg mx-auto shadow-xl relative overflow-hidden">
-          <img class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" src="images/g6.jpg" alt="予約背景">
-          <div class="relative z-10">
-            <div class="flex justify-between items-center mb-6 border-b border-brass/20 pb-3">
-              <span class="text-xs md:text-sm tracking-widest text-brass font-medium">ご予約用テンプレート</span> 
-              <span id="copy-toast" class="text-xs text-rich-black font-medium opacity-0 transition-opacity duration-300 bg-brass px-3 py-1 rounded-sm">コピーしました</span>
-            </div>
-           <textarea id="template-text" class="w-full h-[420px] bg-transparent text-sm md:text-base text-off-white leading-loose focus:outline-none resize-none font-sans select-all" readonly>【中華房 希彩 ご予約希望】
-
-1. お名前（フリガナ）：
-2. 携帯電話番号：
-3. 当店のご利用： 初めて ・ 2回目以降
-
-4. ご希望日時：　月　日（　）　時　分〜
-5. 人数： 大人　名 / お子様　名
-（お子様がいる場合、年齢：　歳）
-
-6. ご希望メニューと数量：
-・大人用（例：おまかせコース○名分）：
-・お子様用（大人と同じコース or 別のご希望）：
-
-7. アレルギーや苦手食材：
-
-8. ご利用用途（例：誕生日、接待、普段の食事）：
-9. お祝いプレートの希望（内容）：
-
-ご要望・ご相談（お子様用備品のご希望や、お食事の量のご相談など）：</textarea>
-
-            <button id="copy-btn" class="w-full mt-6 bg-brass text-rich-black text-sm tracking-widest py-4 hover:bg-off-white hover:text-rich-black transition-all flex items-center justify-center font-medium rounded-sm shadow-lg">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-              </svg> 
-              テンプレートをコピーする
-            </button>
-          </div>
-        </div>
-
-        <!-- LINEアクション＆QRコード表示エリア (ブラッシュアップ済) -->
-        <div class="max-w-lg mx-auto text-center border border-brass/20 bg-dark-sepia/30 p-8 rounded-sm">
-          <p class="text-sm text-mute-gray mb-6 font-light">スマホの方は、下記のボタンをタップしてご予約ページへお進みください。</p>
-          <a href="reserve.html" class="inline-block bg-brass text-rich-black font-bold tracking-wider px-10 py-4 rounded-sm hover:bg-[#c9a86a] transition-colors w-full sm:w-auto shadow-lg mb-8">
+        <!-- ご予約ページへの誘導＆QRコード -->
+        <div class="max-w-lg mx-auto text-center border border-brass/20 bg-dark-sepia/30 p-8 md:p-12 rounded-sm shadow-xl">
+          
+          <a href="reserve.html" class="inline-flex items-center justify-center bg-brass text-rich-black font-bold tracking-widest px-10 py-5 rounded-sm hover:bg-off-white transition-all w-full sm:w-auto shadow-lg mb-10">
             ご予約ページへ進む
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </a>
           
-          <div class="pt-6 border-t border-brass/10">
-            <div class="w-36 h-36 bg-white mx-auto p-2 rounded shadow-md flex items-center justify-center">
+          <div class="pt-8 border-t border-brass/10">
+            <p class="text-[11px] md:text-xs text-mute-gray mb-4 font-light">PCでご覧の方は、スマホでQRコードを読み取って公式LINEをご登録ください。</p>
+            <div class="w-28 h-28 bg-white mx-auto p-2 rounded shadow-md flex items-center justify-center">
               <img src="1000012643.jpg" alt="公式LINE QRコード" class="w-full h-full object-contain">
             </div>
-            <p class="text-[11px] text-mute-gray mt-3 font-light">PCでご覧の方は、スマホで上のQRコードを読み取ってください</p>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   </main>
@@ -608,25 +571,6 @@
         mobileMenu.classList.add('hidden');
       });
     });
-
-    document.getElementById('copy-btn').addEventListener('click', () => {
-      const textArea = document.getElementById('template-text');
-      textArea.select();
-      textArea.setSelectionRange(0, 99999);
-      
-      navigator.clipboard.writeText(textArea.value).then(() => {
-        showToast();
-      }).catch(err => {
-        document.execCommand('copy');
-        showToast();
-      });
-    });
-
-    function showToast() {
-      const toast = document.getElementById('copy-toast');
-      toast.classList.remove('opacity-0');
-      setTimeout(() => toast.classList.add('opacity-0'), 2000);
-    }
   </script>
 </body>
 </html>

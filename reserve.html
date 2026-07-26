@@ -7,16 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* 温かみのあるライトトーン */
             --bg-color: #FDFCF9;       /* 背景：優しいアイボリー */
             --surface-color: #FFFFFF;  /* 要素の背景：白 */
             --gold: #C2A366;           /* 上品なシャンパンゴールド */
-            --gold-dark: #9E824A;      /* 落ち着いたゴールド */
-            --text-main: #4A453E;      /* 文字色：墨色（真っ黒より柔らかい） */
+            --gold-dark: #8C703C;      /* 引き締まった深みのあるゴールド（価格・アクセント用） */
+            --text-main: #4A453E;      /* 文字色：墨色（柔らかい黒） */
             --text-muted: #8C867C;     /* 補足文字：優しいグレー */
             --border-color: #E6E2D8;   /* 枠線：薄いベージュグレー */
-            --accent-red: #A35050;     /* 落ち着いたえんじ色 */
-            --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.03); /* ふんわりとした影 */
+            --badge-bg: #8C867C;       /* 必須バッジ用の落ち着いたグレー */
+            --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.03);
         }
 
         * {
@@ -104,7 +103,7 @@
             font-weight: 600;
         }
         .form-group label .required {
-            background-color: var(--accent-red);
+            background-color: var(--badge-bg);
             color: #fff;
             font-size: 11px;
             margin-left: 10px;
@@ -205,7 +204,7 @@
             font-weight: bold;
             font-size: 16px;
             margin-bottom: 10px;
-            color: var(--accent-red);
+            color: var(--gold-dark); /* 落ち着いたゴールドに変更 */
         }
         .course-desc {
             font-size: 13px;
@@ -315,7 +314,7 @@
         .total-price-box .price {
             font-size: 22px;
             font-weight: bold;
-            color: var(--accent-red);
+            color: var(--gold-dark); /* 下部の合計金額も上品なゴールドに */
         }
         
         .btn-submit {

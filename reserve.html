@@ -12,9 +12,9 @@
             --gold: #D4AF37;
             --gold-dark: #b8972e;
             --text-main: #f5f5f5;
-            --text-muted: #aaaaaa;
+            --text-muted: #999999;
             --border-color: #333333;
-            --accent-red: #3D0C11;
+            --accent-red: #b35959; /* チカチカしない上品なくすみレッド */
         }
 
         * {
@@ -35,7 +35,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            padding-bottom: 120px; /* For sticky footer */
+            padding-bottom: 140px; /* For sticky footer */
         }
 
         /* Header & Message */
@@ -51,7 +51,7 @@
         }
         .chef-message {
             background-color: var(--surface-color);
-            border: 1px solid var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             padding: 20px;
             border-radius: 4px;
             font-size: 14px;
@@ -66,7 +66,7 @@
             left: 10px;
             font-size: 40px;
             color: var(--gold);
-            opacity: 0.3;
+            opacity: 0.2;
         }
 
         /* Form Sections */
@@ -78,6 +78,7 @@
             padding-bottom: 10px;
             display: flex;
             align-items: center;
+            letter-spacing: 1px;
         }
 
         .form-group {
@@ -89,10 +90,13 @@
             font-size: 15px;
         }
         .form-group label .required {
-            color: #ff4444;
-            font-size: 12px;
-            margin-left: 5px;
+            color: var(--accent-red);
+            font-size: 11px;
+            margin-left: 6px;
             vertical-align: middle;
+            border: 1px solid rgba(179, 89, 89, 0.4);
+            padding: 1px 5px;
+            border-radius: 3px;
         }
         
         input[type="text"],
@@ -128,7 +132,7 @@
         /* Radio & Card Selectors */
         .radio-group {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
         .radio-label {
             display: flex;
@@ -139,6 +143,8 @@
         .radio-label input {
             margin-right: 8px;
             accent-color: var(--gold);
+            width: 18px;
+            height: 18px;
         }
 
         .card-selector {
@@ -154,14 +160,14 @@
         }
         .card-content {
             border: 1px solid var(--border-color);
-            padding: 15px;
+            padding: 18px;
             border-radius: 6px;
             background-color: var(--surface-color);
             transition: all 0.3s;
         }
         .card-selector input:checked ~ .card-content {
             border-color: var(--gold);
-            background-color: rgba(212, 175, 55, 0.05);
+            background-color: rgba(212, 175, 55, 0.04);
         }
         .course-title {
             font-size: 16px;
@@ -172,7 +178,7 @@
         .course-price {
             font-family: 'Noto Sans JP', sans-serif;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .course-desc {
             font-size: 13px;
@@ -195,6 +201,11 @@
             border-radius: 50%;
             font-size: 20px;
             cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .counter-btn:hover {
+            background-color: var(--gold-dark);
+            color: var(--bg-color);
         }
         .counter-val {
             font-size: 18px;
@@ -205,8 +216,8 @@
 
         /* Pairing breakdown */
         .pairing-box {
-            background-color: #1a150c;
-            border: 1px solid var(--gold-dark);
+            background-color: #17140f;
+            border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 15px;
             margin-top: 15px;
             border-radius: 4px;
@@ -228,10 +239,10 @@
             border: 1px solid var(--border-color);
             padding: 20px;
             font-family: 'Noto Sans JP', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             white-space: pre-wrap;
-            color: #ddd;
-            margin-top: 20px;
+            color: #cccccc;
+            margin-top: 15px;
             border-radius: 4px;
             user-select: all;
         }
@@ -242,43 +253,47 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: var(--surface-color);
-            border-top: 2px solid var(--gold);
-            padding: 15px 20px;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--gold);
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
         }
         .total-price-box {
             font-family: 'Noto Sans JP', sans-serif;
         }
         .total-price-box .label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--gold);
+            letter-spacing: 1px;
         }
         .total-price-box .price {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
+            color: var(--text-main);
         }
         
         .btn-submit {
-            background-color: var(--gold);
-            color: var(--bg-color);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: #121212;
             border: none;
-            padding: 12px 24px;
-            font-size: 15px;
+            padding: 12px 20px;
+            font-size: 14px;
             font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: opacity 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         .btn-submit:hover {
-            background-color: var(--gold-dark);
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -292,7 +307,7 @@
 
     <div class="chef-message">
         「アレルギーや苦手な食材、コース内容のご相談など、LINEにて柔軟に対応いたします。ご不明な点がございましたら、まずはお気軽にご相談ください。」<br>
-        <span style="display:block; text-align:right; margin-top:5px;">— 中華房 希彩 シェフ</span>
+        <span style="display:block; text-align:right; margin-top:8px; color:var(--gold); font-size:13px;">— 中華房 希彩 シェフ</span>
     </div>
 
     <!-- Section 1: お客様情報 -->
@@ -328,13 +343,13 @@
     <div class="form-group">
         <label>ご人数</label>
         <div class="counter-wrap">
-            <span style="width: 60px;">大人</span>
+            <span style="width: 60px; color: var(--text-muted);">大人</span>
             <button class="counter-btn" onclick="updateCount('adult', -1)">-</button>
             <span class="counter-val" id="adultCount">2</span>名
             <button class="counter-btn" onclick="updateCount('adult', 1)">+</button>
         </div>
         <div class="counter-wrap">
-            <span style="width: 60px;">お子様</span>
+            <span style="width: 60px; color: var(--text-muted);">お子様</span>
             <button class="counter-btn" onclick="updateCount('kids', -1)">-</button>
             <span class="counter-val" id="kidsCount">0</span>名
             <button class="counter-btn" onclick="updateCount('kids', 1)">+</button>
@@ -351,7 +366,7 @@
         <input type="radio" name="course" value="omakase" data-name="希彩 完全おまかせコース" data-price="6600" checked>
         <div class="card-content">
             <div class="course-title">【希彩 完全おまかせコース】</div>
-            <div class="course-price">¥6,600 <span style="font-size:12px; font-weight:normal;">(税込 / 1名)</span></div>
+            <div class="course-price">¥6,600 <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">(税込 / 1名)</span></div>
             <div class="course-desc">前菜、点心、主菜、お食事、特製デザート盛り合わせ。その日の仕入れとインスピレーションで組み立てる希彩らしい贅沢なスタイル。</div>
         </div>
     </label>
@@ -359,7 +374,7 @@
         <input type="radio" name="course" value="takumi" data-name="匠 手打麺＆自家製点心コース" data-price="8800">
         <div class="card-content">
             <div class="course-title">【匠 手打麺＆自家製点心コース】</div>
-            <div class="course-price">¥8,800 <span style="font-size:12px; font-weight:normal;">(税込 / 1名)</span></div>
+            <div class="course-price">¥8,800 <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">(税込 / 1名)</span></div>
             <div class="course-desc">打ち立ての熟成手打麺や皮から作る出来立て点心をメインに据えた職人の特別コース。</div>
         </div>
     </label>
@@ -367,7 +382,7 @@
         <input type="radio" name="course" value="premium" data-name="希彩 信州極上コース" data-price="8800">
         <div class="card-content">
             <div class="course-title">【希彩 信州極上コース】</div>
-            <div class="course-price">¥8,800〜 <span style="font-size:12px; font-weight:normal;">(税込 / 1名)</span></div>
+            <div class="course-price">¥8,800〜 <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">(税込 / 1名)</span></div>
             <div class="course-desc">信州の自然の恵み、食文化を感じられる厳選食材で仕立てる最高峰コース。特別な夜に。</div>
         </div>
     </label>
@@ -381,7 +396,7 @@
     <label class="card-selector">
         <input type="radio" name="drink" value="nomihodai" data-name="通常飲み放題プラン" data-price="3500">
         <div class="card-content">
-            <div class="course-title">通常飲み放題プラン（+¥3,500/1名）</div>
+            <div class="course-title">通常飲み放題プラン（+¥3,500 / 1名）</div>
             <div class="course-desc">ビール・日本酒・紹興酒・ソフトドリンク等</div>
         </div>
     </label>
@@ -395,7 +410,7 @@
 
     <!-- ペアリング内訳UI -->
     <div class="pairing-box" id="pairingBox">
-        <p style="font-size: 13px; color: var(--gold); margin-bottom: 10px;">※ペアリングの合計人数が「大人人数」と一致するように調整してください。</p>
+        <p style="font-size: 13px; color: var(--gold); margin-bottom: 12px;">※ペアリングの合計人数が「大人人数」と一致するように調整してください。</p>
         <div class="pairing-row">
             <div>
                 <span style="font-size:14px;">アルコールペアリング</span><br>
@@ -407,7 +422,7 @@
                 <button class="counter-btn" onclick="updatePairing('alc', 1)">+</button>
             </div>
         </div>
-        <div class="pairing-row">
+        <div class="pairing-row" style="margin-top: 10px;">
             <div>
                 <span style="font-size:14px;">ノンアルコールペアリング</span><br>
                 <span style="font-size:12px; color:var(--text-muted);">中国茶・ノンアルコール (+¥2,500)</span>
@@ -458,7 +473,6 @@
 </div>
 
 <script>
-    // State
     let state = {
         adults: 2,
         kids: 0,
@@ -466,13 +480,11 @@
         nonCount: 0
     };
 
-    // Initialize Date Constraint (Tomorrow)
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
     document.getElementById('reserveDate').min = tomorrow.toISOString().split('T')[0];
 
-    // Event Listeners
     document.querySelectorAll('input, select, textarea').forEach(el => {
         el.addEventListener('input', generateTemplate);
         el.addEventListener('change', generateTemplate);
@@ -483,7 +495,7 @@
             const pairingBox = document.getElementById('pairingBox');
             if(radio.value === 'pairing') {
                 pairingBox.classList.add('active');
-                state.alcCount = state.adults; // Default reset
+                state.alcCount = state.adults;
                 state.nonCount = 0;
                 document.getElementById('alcCount').innerText = state.alcCount;
                 document.getElementById('nonCount').innerText = state.nonCount;
@@ -494,11 +506,9 @@
         });
     });
 
-    // Counters
     function updateCount(type, delta) {
         if(type === 'adult') {
             if(state.adults + delta >= 1) state.adults += delta;
-            // Auto adjust pairing
             if(document.querySelector('input[name="drink"]:checked').value === 'pairing') {
                 state.alcCount = state.adults;
                 state.nonCount = 0;
@@ -533,12 +543,10 @@
         generateTemplate();
     }
 
-    // Format Currency
     function formatMoney(num) {
         return num.toLocaleString();
     }
 
-    // Generate Text
     function generateTemplate() {
         const name = document.getElementById('userName').value || '未記入';
         const phone = document.getElementById('userPhone').value || '未記入';
@@ -609,12 +617,10 @@
 
         document.getElementById('templateOutput').innerText = template;
         
-        // Update Sticky Footer
         document.getElementById('summaryLabel').innerText = `大人${state.adults}名様 概算合計`;
         document.getElementById('totalPriceDisplay').innerText = `¥${formatMoney(grandTotal)}${priceSuffix}`;
     }
 
-    // Copy and Redirect
     document.getElementById('copyBtn').addEventListener('click', () => {
         const name = document.getElementById('userName').value;
         const phone = document.getElementById('userPhone').value;
@@ -634,7 +640,6 @@
         });
     });
 
-    // Initial render
     generateTemplate();
 </script>
 </body>

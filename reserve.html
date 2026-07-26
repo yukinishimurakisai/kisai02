@@ -542,8 +542,8 @@
 <!-- Custom Modal Popup -->
 <div class="modal-overlay" id="customModal">
     <div class="modal-content">
-        <div class="modal-title">中華房 希彩</div>
-        <div class="modal-text">
+        <div class="modal-title" id="modalTitle">中華房 希彩</div>
+        <div class="modal-text" id="modalText">
             ✅ ご予約内容をコピーしました。<br><br>
             まもなく公式LINEが開きますので、トーク画面にそのまま「貼り付け（ペースト）」して送信をお願いいたします。
         </div>
@@ -558,6 +558,8 @@
         alcCount: 2,
         nonCount: 0
     };
+
+    let modalActionType = 'success'; // 'success' or 'error'
 
     const today = new Date();
     const tomorrow = new Date(today);
@@ -707,22 +709,31 @@
         const dateRaw = document.getElementById('reserveDate').value;
 
         if(!name || !phone || !dateRaw) {
-            alert('⚠️ お名前、携帯電話番号、ご希望日時をご入力ください。');
+            modalActionType = 'error';
+            document.getElementById('modalTitle').innerText = '入力内容のご確認';
+            document.getElementById('modalText').innerHTML = '⚠️ お名前、携帯電話番号、ご希望日時をご入力ください。';
+            document.getElementById('customModal').classList.add('active');
             return;
         }
 
         const text = document.getElementById('templateOutput').innerText;
         navigator.clipboard.writeText(text).then(() => {
-            // Show Custom Modal instead of standard alert
+            modalActionType = 'success';
+            document.getElementById('modalTitle').innerText = '中華房 希彩';
+            document.getElementById('modalText').innerHTML = '✅ ご予約内容をコピーしました。<br><br>まもなく公式LINEが開きますので、トーク画面にそのまま**「貼り付け（ペースト）」**して送信をお願いいたします。';
             document.getElementById('customModal').classList.add('active');
         }).catch(err => {
             alert('コピーに失敗しました。手動でテキストを選択してコピーしてください。');
         });
     });
 
-    // Modal OK button action (Redirect to LINE)
+    // Modal OK button action
     document.getElementById('modalOkBtn').addEventListener('click', () => {
-        window.location.href = 'https://lin.ee/RHzCAPf';
+        const modal = document.getElementById('customModal');
+        modal.classList.remove('active');
+        if(modalActionType === 'success') {
+            window.location.href = 'https://lin.ee/RHzCAPf';
+        }
     });
 
     generateTemplate();

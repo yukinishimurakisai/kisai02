@@ -204,7 +204,7 @@
             font-weight: bold;
             font-size: 16px;
             margin-bottom: 10px;
-            color: var(--gold-dark); /* 落ち着いたゴールドに変更 */
+            color: var(--gold-dark);
         }
         .course-desc {
             font-size: 13px;
@@ -314,7 +314,7 @@
         .total-price-box .price {
             font-size: 22px;
             font-weight: bold;
-            color: var(--gold-dark); /* 下部の合計金額も上品なゴールドに */
+            color: var(--gold-dark);
         }
         
         .btn-submit {
@@ -593,166 +593,7 @@
     </div>
 </div>
 
-script>
-    let state = {
-        adult<s: 2,
-        kids: 0,
-        alcCount: 2,
-        nonCount: 0
-    };
-
-    let modalActionType = 'success'; // 'success' or 'error'
-
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-    document.getElementById('reserveDate').min = tomorrow.toISOString().split('T')[0];
-
-    document.querySelectorAll('input, select, textarea').forEach(el => {
-        el.addEventListener('input', generateTemplate);
-        el.addEventListener('change', generateTemplate);
-    });
-
-    document.querySelectorAll('input[name="drink"]').forEach(radio => {
-        radio.addEventListener('change', () => {
-            const pairingBox = document.getElementById('pairingBox');
-            if(radio.value === 'pairing') {
-                pairingBox.classList.add('active');
-                state.alcCount = state.adults;
-                state.nonCount = 0;
-                document.getElementById('alcCount').innerText = state.alcCount;
-                document.getElementById('nonCount').innerText = state.nonCount;
-            } else {
-                pairingBox.classList.remove('active');
-            }
-            generateTemplate();
-        });
-    });
-
-    function updateCount(type, delta) {
-        if(type === 'adult') {
-            if(state.adults + delta >= 1) state.adults += delta;
-            if(document.querySelector('input[name="drink"]:checked').value === 'pairing') {
-                state.alcCount = state.adults;
-                state.nonCount = 0;
-                document.getElementById('alcCount').innerText = state.alcCount;
-                document.getElementById('nonCount').innerText = state.nonCount;
-            }
-        }
-        if(type === 'kids') {
-            if(state.kids + delta >= 0) state.kids += delta;
-            document.getElementById('kidsDetailsWrap').style.display = state.kids > 0 ? 'block' : 'none';
-        }
-        document.getElementById('adultCount').innerText = state.adults;
-        document.getElementById('kidsCount').innerText = state.kids;
-        generateTemplate();
-    }
-
-    function updatePairing(type, delta) {
-        if(type === 'alc') {
-            if(state.alcCount + delta >= 0 && state.alcCount + delta <= state.adults) {
-                state.alcCount += delta;
-                state.nonCount = state.adults - state.alcCount;
-            }
-        }
-        if(type === 'non') {
-            if(state.nonCount + delta >= 0 && state.nonCount + delta <= state.adults) {
-                state.nonCount += delta;
-                state.alcCount = state.adults - state.nonCount;
-            }
-        }
-        document.getElementById('alcCount').innerText = state.alcCount;
-        document.getElementById('nonCount').innerText = state.nonCount;
-        generateTemplate();
-    }
-
-    function formatMoney(num) {
-        return num.toLocaleString();
-    }
-
-    function generateTemplate() {
-        const name = document.getElementById('userName').value || '未記入';
-        const phone = document.getElementById('userPhone').value || '未記入';
-        const visit = document.querySelector('input[name="visitCount"]:checked').value;
-        const dateRaw = document.getElementById('reserveDate').value;
-        const time = document.getElementById('reserveTime').value;
-        let dateStr = '未記入';
-        if(dateRaw) {
-            const d = new Date(dateRaw);
-            const days = ['日','月','火','水','木','金','土'];
-            dateStr = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日(${days[d.getDay()]}) ${time}〜`;
-        }
-
-        const kidsDetails = document.getElementById('kidsDetails').value || 'なし';
-        
-        const courseRadio = document.querySelector('input[name="course"]:checked');
-        const courseName = courseRadio.getAttribute('data-name');
-        const coursePrice = parseInt(courseRadio.getAttribute('data-price'));
-        
-        const drinkRadio = document.querySelector('input[name="drink"]:checked');
-        const drinkType = drinkRadio.value;
-        const drinkName = drinkRadio.getAttribute('data-name');
-        
-        let drinkText = '';
-        let drinkTotal = 0;
-
-        if (drinkType === 'pairing') {
-            drinkText = `\n      ・アルコール（+¥4,500） × ${state.alcCount}名\n      ・ノンアルコール（+¥2,500） × ${state.nonCount}名`;
-            drinkTotal = (state.alcCount * 4500) + (state.nonCount * 2500);
-        } else {
-            const drinkP = parseInt(drinkRadio.getAttribute('data-price'));
-            drinkText = drinkName;
-            if(drinkP > 0) drinkText += `（+¥${formatMoney(drinkP)}/1名）`;
-            drinkTotal = drinkP * state.adults;
-        }
-
-        const allergies = document.getElementById('allergies').value || 'なし';
-        const purpose = document.getElementById('purpose').value || 'なし';
-        const plate = document.getElementById('plate').value || 'なし';
-        const notes = document.getElementById('notes').value || 'なし';
-
-        const courseTotal = coursePrice * state.adults;
-        const grandTotal = courseTotal + drinkTotal;
-        const priceSuffix = courseName.includes('極上') ? '〜' : '';
-
-        const template = `【中華房 希彩 ご予約希望】
-
-1. お名前（フリガナ）： ${name}
-2. 電話番号： ${phone}
-3. 当店のご利用： ${visit}
-4. ご希望日時： ${dateStr}
-5. 人数： 大人 ${state.adults}名 / お子様 ${state.kids}名${state.kids > 0 ? `（詳細： ${kidsDetails}）` : ''}
-6. ご希望コース：
-　・【${courseName}】¥${formatMoney(coursePrice)}
-　・お飲み物： ${drinkText}
-7. アレルギー・苦手食材： ${allergies}
-8. ご利用用途： ${purpose}
-9. お祝いプレート： ${plate}
-10. ご要望： ${notes}
-
-─────────────────────
-【概算お見積もり】
-コース：¥${formatMoney(coursePrice)} × ${state.adults}名
-ドリンク：¥${formatMoney(drinkTotal)}
-合計（税込）：¥${formatMoney(grandTotal)}${priceSuffix}
-※最終金額はご来店時にご確認ください。
-─────────────────────`;
-
-        document.getElementById('templateOutput').innerText = template;
-        
-        document.getElementById('summaryLabel').innerText = `大人${state.adults}名様 概算合計`;
-        document.getElementById('totalPriceDisplay').innerText = `¥${formatMoney(grandTotal)}${priceSuffix}`;
-    }
-
-    // Custom Modal Trigger & Copy
-    document.getElementById('copyBtn').addEventListener('click', () => {
-        const name = document.getElementById('userName').value;
-        const phone = document.getElementById('userPhone').value;
-        const dateRaw = document.getElementById('reserveDate').value;
-
-        if(!name || !phone || !dateRaw) {
-            modalActionType = 'error';
-            document.getEle<script>
+<script>
     let state = {
         adults: 2,
         kids: 0,
@@ -943,7 +784,7 @@ script>
         };
 
         // GASへ非同期送信
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxAdcwhJIpIa6zG9Sjxt-uIJGPjEY0sYbXIWUQbds6Pr9GOj7o7e3dXiUVepoGwHen/exec";[span_1](start_span)[span_1](end_span)
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxAdcwhJIpIa6zG9Sjxt-uIJGPjEY0sYbXIWUQbds6Pr9GOj7o7e3dXiUVepoGwHen/exec";
         fetch(SCRIPT_URL, {
             method: "POST",
             mode: "no-cors",
@@ -974,6 +815,5 @@ script>
 
     generateTemplate();
 </script>
-
 </body>
 </html>

@@ -7,14 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #FDFCF9;       /* 背景：優しいアイボリー */
-            --surface-color: #FFFFFF;  /* 要素の背景：白 */
-            --gold: #C2A366;           /* 上品なシャンパンゴールド */
-            --gold-dark: #8C703C;      /* 引き締まった深みのあるゴールド（価格・アクセント用） */
-            --text-main: #4A453E;      /* 文字色：墨色（柔らかい黒） */
-            --text-muted: #8C867C;     /* 補足文字：優しいグレー */
-            --border-color: #E6E2D8;   /* 枠線：薄いベージュグレー */
-            --badge-bg: #8C867C;       /* 必須バッジ用の落ち着いたグレー */
+            --bg-color: #FDFCF9;       
+            --surface-color: #FFFFFF;  
+            --gold: #C2A366;           
+            --gold-dark: #8C703C;      
+            --text-main: #4A453E;      
+            --text-muted: #8C867C;     
+            --border-color: #E6E2D8;   
+            --badge-bg: #8C867C;       
             --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.03);
         }
 
@@ -39,7 +39,6 @@
             padding-bottom: 140px;
         }
 
-        /* Header & Message */
         header {
             text-align: center;
             padding: 40px 0 25px;
@@ -73,7 +72,6 @@
             font-family: serif;
         }
 
-        /* Form Sections */
         .section-title {
             font-size: 19px;
             color: var(--text-main);
@@ -146,7 +144,6 @@
             font-family: 'Noto Sans JP', sans-serif;
         }
 
-        /* Radio & Card Selectors */
         .radio-group {
             display: flex;
             gap: 25px;
@@ -212,7 +209,6 @@
             line-height: 1.6;
         }
 
-        /* Counter */
         .counter-wrap {
             display: flex;
             align-items: center;
@@ -245,7 +241,6 @@
             font-weight: bold;
         }
 
-        /* Pairing breakdown */
         .pairing-box {
             background-color: #FAFAF8;
             border: 1px dashed var(--gold);
@@ -271,7 +266,6 @@
             border-bottom: none;
         }
 
-        /* Output Template */
         .template-preview {
             background-color: #F4F3F0;
             border: 1px solid var(--border-color);
@@ -286,7 +280,6 @@
             line-height: 1.8;
         }
 
-        /* Sticky Footer */
         .sticky-footer {
             position: fixed;
             bottom: 0;
@@ -337,7 +330,6 @@
             transform: translateY(-2px);
         }
 
-        /* Custom Modal Popup */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -421,7 +413,6 @@
         <span style="display:block; text-align:right; margin-top:12px; color:var(--text-muted); font-size:13px;">— 中華房 希彩 シェフ</span>
     </div>
 
-    <!-- Section 1: お客様情報 -->
     <h2 class="section-title">1. お客様情報</h2>
     <div class="form-group">
         <label>お名前（フリガナ）<span class="required">必須</span></label>
@@ -470,7 +461,6 @@
         </div>
     </div>
 
-    <!-- Section 2: コース選択 -->
     <h2 class="section-title">2. ご希望コース</h2>
     <label class="card-selector">
         <input type="radio" name="course" value="omakase" data-name="希彩 完全おまかせコース" data-price="6600" checked>
@@ -497,10 +487,9 @@
         </div>
     </label>
 
-    <!-- Section 3: ドリンクプラン -->
     <h2 class="section-title">3. お飲み物プラン</h2>
     <label class="card-selector">
-        <input type="radio" name="drink" value="none" data-name="お料理のみ（当日ご注文）" data-price="0" checked>
+        <input type="radio" name="drink" value="none" data-name="お料理のみ（当日個別にご注文）" data-price="0" checked>
         <div class="card-content"><div class="course-title" style="margin:0;">お料理のみ（当日個別にご注文）</div></div>
     </label>
     <label class="card-selector">
@@ -511,7 +500,7 @@
         </div>
     </label>
     <label class="card-selector">
-        <input type="radio" name="drink" value="pairing" data-name="ペアリングプラン" data-price="0">
+        <input type="radio" name="drink" value="pairing" data-name="厳選ペアリングプラン" data-price="0">
         <div class="card-content">
             <div class="course-title">厳選ペアリングプラン（グループ内で個別選択可）</div>
             <div class="course-desc">お料理に合わせた塩尻ワインや地酒、または管理栄養士監修の中国茶・ノンアルコールペアリングをお楽しみいただけます。</div>
@@ -544,7 +533,6 @@
         </div>
     </div>
 
-    <!-- Section 4: 詳細オプション -->
     <h2 class="section-title">4. 詳細・ご要望</h2>
     <div class="form-group">
         <label>アレルギー・苦手食材</label>
@@ -563,14 +551,12 @@
         <textarea id="notes" placeholder="お子様用備品のご希望や、その他ご相談などがございましたらご記入ください"></textarea>
     </div>
 
-    <!-- Section 5: プレビュー -->
     <h2 class="section-title">LINE予約用テンプレート（自動作成）</h2>
     <p class="note">以下の文章が自動で作成されます。「予約内容をコピーしてLINEを開く」を押して送信してください。</p>
     <div class="template-preview" id="templateOutput"></div>
 
 </div>
 
-<!-- Sticky Footer -->
 <div class="sticky-footer">
     <div class="total-price-box">
         <div class="label" id="summaryLabel">大人2名様 概算合計</div>
@@ -581,7 +567,6 @@
     </button>
 </div>
 
-<!-- Custom Modal Popup -->
 <div class="modal-overlay" id="customModal">
     <div class="modal-content">
         <div class="modal-title" id="modalTitle">中華房 希彩</div>
@@ -594,14 +579,8 @@
 </div>
 
 <script>
-    let state = {
-        adults: 2,
-        kids: 0,
-        alcCount: 2,
-        nonCount: 0
-    };
-
-    let modalActionType = 'success'; // 'success' or 'error'
+    let state = { adults: 2, kids: 0, alcCount: 2, nonCount: 0 };
+    let modalActionType = 'success';
 
     const today = new Date();
     const tomorrow = new Date(today);
@@ -744,7 +723,6 @@
         document.getElementById('totalPriceDisplay').innerText = `¥${formatMoney(grandTotal)}${priceSuffix}`;
     }
 
-    // Custom Modal Trigger & Copy & Spreadsheet Sync
     document.getElementById('copyBtn').addEventListener('click', () => {
         const name = document.getElementById('userName').value;
         const phone = document.getElementById('userPhone').value;
@@ -758,32 +736,38 @@
             return;
         }
 
-        // --- スプレッドシートへデータを自動送信 ---
-        const courseRadio = document.querySelector('input[name="course"]:checked');
-        const dateStrVal = document.getElementById('reserveDate').value + ' ' + document.getElementById('reserveTime').value;
         const kidsCountVal = state.kids;
         const kidsDetailsVal = document.getElementById('kidsDetails').value;
-        const kidsInfoStr = kidsCountVal > 0 ? `${kidsCountVal}名 (${kidsDetailsVal})` : 'なし';
+        const peopleStr = `大人${state.adults}名` + (kidsCountVal > 0 ? ` / 子供${kidsCountVal}名 (${kidsDetailsVal})` : '');
+
+        const courseRadio = document.querySelector('input[name="course"]:checked');
+        const courseName = courseRadio.getAttribute('data-name');
+        
+        const dateStrVal = document.getElementById('reserveDate').value + ' ' + document.getElementById('reserveTime').value;
         
         const drinkRadio = document.querySelector('input[name="drink"]:checked');
-        const drinkName = drinkRadio.getAttribute('data-name');
-        const courseAndDrink = courseRadio.getAttribute('data-name') + ' / ' + drinkName;
+        let finalDrinkName = drinkRadio.getAttribute('data-name');
+        
+        // ★ペアリング選択時の内訳をスプレッドシートに送信★
+        if (drinkRadio.value === 'pairing') {
+            finalDrinkName = `ペアリング (アルコール${state.alcCount}名, ノンアル${state.nonCount}名)`;
+        }
 
         const postData = {
             name: name,
-            phone: phone,
-            visit: document.querySelector('input[name="visitCount"]:checked').value,
             dateStr: dateStrVal,
-            kidsInfo: kidsInfoStr,
-            courseAndDrink: courseAndDrink,
+            peopleCount: peopleStr,
+            course: courseName,           // ★ここを分離しました
+            drink: finalDrinkName,        // ★ここを分離しました
             allergies: document.getElementById('allergies').value,
-            purpose: document.getElementById('purpose').value,
+            visit: document.querySelector('input[name="visitCount"]:checked').value,
+            phone: phone,
+            totalPrice: document.getElementById('totalPriceDisplay').innerText,
             plate: document.getElementById('plate').value,
-            notes: document.getElementById('notes').value,
-            totalPrice: document.getElementById('totalPriceDisplay').innerText
+            purpose: document.getElementById('purpose').value,
+            notes: document.getElementById('notes').value
         };
 
-        // GASへ非同期送信
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxAdcwhJIpIa6zG9Sjxt-uIJGPjEY0sYbXIWUQbds6Pr9GOj7o7e3dXiUVepoGwHen/exec";
         fetch(SCRIPT_URL, {
             method: "POST",
@@ -791,7 +775,6 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(postData)
         }).catch(err => console.log(err));
-        // ------------------------------------------
 
         const text = document.getElementById('templateOutput').innerText;
         navigator.clipboard.writeText(text).then(() => {
@@ -804,7 +787,6 @@
         });
     });
 
-    // Modal OK button action
     document.getElementById('modalOkBtn').addEventListener('click', () => {
         const modal = document.getElementById('customModal');
         modal.classList.remove('active');

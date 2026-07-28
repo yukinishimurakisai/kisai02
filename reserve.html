@@ -601,7 +601,7 @@
         nonCount: 0
     };
 
-    let modalActionType = 'success';
+    let modalActionType = 'success'; // 'success' or 'error'
 
     const today = new Date();
     const tomorrow = new Date(today);
@@ -758,31 +758,29 @@
             return;
         }
 
-        // --- 人数を大人と子供でまとめる修正 ---
-        const kidsCountVal = state.kids;
-        const kidsDetailsVal = document.getElementById('kidsDetails').value;
-        const peopleStr = `大人${state.adults}名` + (kidsCountVal > 0 ? ` / 子供${kidsCountVal}名 (${kidsDetailsVal})` : '');
-
+        // --- スプレッドシートへデータを自動送信 ---
         const courseRadio = document.querySelector('input[name="course"]:checked');
         const dateStrVal = document.getElementById('reserveDate').value + ' ' + document.getElementById('reserveTime').value;
+        const kidsCountVal = state.kids;
+        const kidsDetailsVal = document.getElementById('kidsDetails').value;
+        const kidsInfoStr = kidsCountVal > 0 ? `${kidsCountVal}名 (${kidsDetailsVal})` : 'なし';
         
         const drinkRadio = document.querySelector('input[name="drink"]:checked');
         const drinkName = drinkRadio.getAttribute('data-name');
         const courseAndDrink = courseRadio.getAttribute('data-name') + ' / ' + drinkName;
 
-        // GAS側の新しい順番に合わせてデータを準備
         const postData = {
             name: name,
+            phone: phone,
+            visit: document.querySelector('input[name="visitCount"]:checked').value,
             dateStr: dateStrVal,
-            peopleCount: peopleStr,  // ここに大人と子供が一緒に入ります
+            kidsInfo: kidsInfoStr,
             courseAndDrink: courseAndDrink,
             allergies: document.getElementById('allergies').value,
-            visit: document.querySelector('input[name="visitCount"]:checked').value,
-            phone: phone,
-            totalPrice: document.getElementById('totalPriceDisplay').innerText,
-            plate: document.getElementById('plate').value,
             purpose: document.getElementById('purpose').value,
-            notes: document.getElementById('notes').value
+            plate: document.getElementById('plate').value,
+            notes: document.getElementById('notes').value,
+            totalPrice: document.getElementById('totalPriceDisplay').innerText
         };
 
         // GASへ非同期送信
